@@ -1,0 +1,57 @@
+body {
+	background-color: #a4ae68;
+	margin-left: 20px;
+}
+h1 {
+	text-align: center;
+}
+p.first {
+	text-align: center;
+	font-family: serif;
+
+}
+#hometown {
+	padding: 15px;
+	margin-left: 300px;
+	margin-right: 300px;
+
+}
+#header {
+	background-color: #bbae94;
+	height: 100px;
+	margin-bottom: 20px;
+}
+#footer {
+	text-align: center;
+	padding: 15px;
+	font-size: 90%;
+}
+img {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+}
+#quick_link {
+	float: right;
+	display: block;
+	height: 100px;
+	width: 100px;
+	margin-right: 30px;
+	border-color: blue;
+	border-style: ridge;
+}
+a:hover {
+	font-size: large;
+}
+
+#share {
+	text-align: center;
+	font-size: 16px;
+}
+
+#middle {
+	text-align: center;
+}
+
+
+

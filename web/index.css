@@ -1,0 +1,26 @@
+body {
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-top: 200px;
+    
+    background-color: #a4ae68;
+    padding: 10px;
+    }
+
+table, th, td {
+   border: thin dotted black;
+   width: 400px;
+   border-collapse: collapse;
+   padding: 3px;
+   margin-right: 200px;
+   margin-left: 200px;
+}
+tr:nth-child(even){
+	background-color: #3f4;
+}
+a:hover {
+	background-color: yellow;
+}
+td.right {
+	text-align: center;
+}
