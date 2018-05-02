@@ -2,91 +2,48 @@
 "http://www.w3.org/TR/xhtmll/DTD/xhtmll-stict.dtd">
 <html xmlns="http://www.w3.ord/1999/xhtml" lang="en" xml:lang="en" >
 <head>
-	<title>CS313 Home Page</title>
-	<link rel="stylesheet" type="text/css" href="index.css" />
-	<script type="text/javascript" src="index.js"></script>
+	<title>This is My Personal Page</title>
+	<link rel="stylesheet" type="text/css" href="homepage.css" />
+	<script type="text/javascript" src="index.js">
+	</script>
 </head>
 <body>
-	<table id="large">
-	  <tr>
-		<th>Week 1</th>
-		<td><a href="hello.html">Hello World</a></td>
-		<td id="week01" class="right"><button id="week1" type="button" 
-			onclick="this.innerHTML ='4/28/18'">Due Date</button></td>
-	  </tr>
-	  <tr>
-	  	<th>Week 2</th>
-	  	<td><a href="homepage.html" class="even">Back to my homepage</a></td>
-	  	<td id="week02" class="right"><button type="button" 
-			onclick="this.innerHTML ='5/05/18'">Due Date</button></td>
-	  </tr>
-	  <tr>
-	  	<th>Week 3</th>
-	  	<td><a href="shoppingcart.html">Coming Soon</a></td>
-	  	<td id="week3" class="right"><button type="button"
-			onclick="this.innerHTML ='5/12/18'">Due Date</button></td>
-	  </tr>
-	  <tr>
-	  	<th>Week 4</th>
-	  	<td><a href="databasesetup.html">Coming Soon</a></td>
-	  	<td id="week4" class="right"><button type="button"
-			onclick="this.innerHTML ='5/19/18'">Due Date</button></td>
-	  </tr>
-	  <tr>
-	  	<th>Week 5</th>
-	  	<td><a href="databseaccess.html">Coming Soon</a></td>
-	  	<td id="week5" class="right"><button type="button"
-			onclick="this.innerHTML ='5/26/18'">Due Date</button></td>
-	  </tr>
-	  <tr>
-	  	<th>Week 6</th>
-	  	<td><a href="databaseupdate.html">Coming Soon</a></td>
-	  	<td id="week6" class="right"><button type="button"
-			onclick="this.innerHTML ='6/02/18'">Due Date</button></td>
-	  </tr>
-	  <tr>
-	  	<th>Week 7</th>
-	  	<td><a href="project1.html">Project 1</a></td>
-	  	<td id="week7" class="right"><button type="button"
-			onclick="this.innerHTML ='6/09/18'">Due Date</button></td>
-	  </tr>
-	  <tr>
-	  	<th>Week 8</th>
-	  	<td><a href="helloworld.html">Coming Soon</a></td>
-	  	<td id="week8" class="right"><button type="button"
-			onclick="this.innerHTML ='6/16/18'">Due Date</button></td>
-	  </tr>
-	  <tr>
-	  	<th>Week 9</th>
-	  	<td><a href="postalratecalculator.html">Coming Soon</a></td>
-	  	<td id="week9" class="right"><button type="button"
-			onclick="this.innerHTML ='6/23/18'">Due Date</button></td>
-	  </tr>
-	  <tr>
-	  	<th>Week 10</th>
-	  	<td><a href="">Coming Soon</a></td>
-	  	<td id="week10" class="right"><button type="button"
-			onclick="this.innerHTML ='6/30/18'">Due Date</button></td>
-	  </tr>
-	  <tr>
-	  	<th>Week 11</th>
-	  	<td><a href="">Coming Soon</a></td>
-	  	<td id="week11" class="right"><button type="button"
-			onclick="this.innerHTML ='7/07/18'">Due Date</button></td>
-	  </tr>
-	  <tr>
-	  	<th>Week 12</th>
-	  	<td><a href="">Coming Soon</a></td>
-	  	<td id="week12" class="right"><button type="button"
-			onclick="this.innerHTML ='7/14/18'">Due Date</button></td>
-	  </tr>
-	  <tr>
-	  	<th>Week 13</th>
-	  	<td><a href="">App Store Page</a></td>
-	  	<td id="week13" class="right"><button type="button"
-			onclick="this.innerHTML ='7/21/18'">Due Date</button></td>
-	  </tr>
-	</table>
+	<?php
+echo "<h3>Today is " . date("Y/m/d")"</h3>";
+?>
+	<div id="header">
+		<h1>Welcome to Bryan's Personal Page</h1>
 
+	</div>
+
+ <div id="family"> 	
+    <p class="first">If you would like to go straight to the assignments, I don't blame you! Just <a href="index.html">click here.</a> Otherwise, let me tell you a little bit about myself.
+    </p>
+</div>
+
+  <div id="hometown">
+  	<p>Since you decided to stick around, let me introduce myself. My name is Bryan Lopez and I currently live in Federal Way, WA. I moved up here about 10 years ago.</p>
+  </div>
+  <p class="first">Here is a family photo that was taken a few years ago. There is nothing more important. <br />
+    	<img src="family_photo.jpg" alt="Family Photo" />
+    </p>
+    <p class="first">I have had the pleasure of going with my family to disneyland last summer. We are planning to visit Hawaii this summer. That's a place I have never been and I'm looking forward to it.</p>
+    <p>
+    	<img src="disneyland.jpg" alt="Disneyland Family Photo" />
+    </p>
+
+    <p class="first">There is nothing better than famiy. Click below for our adventure with high ropes.</p>
+
+    <div id="middle">
+       <img src="" id="share">
+    	   <button type="button" onclick="sharePicture()" value="Press Me"></button>
+    </div>
+    <p class="first">
+    	I hope you enjoyed my pictures, please proceed to look at my assignments!<br />
+    	<a href="index.html">ASSIGNMENTS PAGE</a>
+    </p>
+  <div id="footer">
+  	&copy; 2018, Bryan Lopez 
+  </div>
 </body>
 </html>
