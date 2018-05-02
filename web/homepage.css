@@ -5,9 +5,6 @@ body {
 h1 {
 	text-align: center;
 }
-h3 {
-	text-align: center;
-}
 p.first {
 	text-align: center;
 	font-family: serif;
@@ -23,6 +20,7 @@ p.first {
 	background-color: #bbae94;
 	height: 100px;
 	margin-bottom: 20px;
+	text-align: center;
 }
 #footer {
 	text-align: center;

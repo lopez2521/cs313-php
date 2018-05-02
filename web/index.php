@@ -8,12 +8,13 @@
 	</script>
 </head>
 <body>
-	<?php
-echo "<h3>Today is " . date("Y/m/d")"</h3>";
-?>
 	<div id="header">
 		<h1>Welcome to Bryan's Personal Page</h1>
-
+<p>
+	<?php
+echo "Today is " . date("Y/m/d");
+?>
+</p>
 	</div>
 
  <div id="family"> 	
