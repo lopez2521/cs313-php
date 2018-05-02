@@ -30,7 +30,7 @@ echo "Today is " . date("Y/m/d");
     </p>
     <p class="first">I have had the pleasure of going with my family to disneyland last summer. We are planning to visit Hawaii this summer. That's a place I have never been and I'm looking forward to it.</p>
     <p>
-    	<img src="disneyland.jpg" alt="Disneyland Family Photo" />
+    	<img src="disneyland.jpg.html" alt="Disneyland Family Photo" />
     </p>
 
     <p class="first">There is nothing better than famiy. Click below for our adventure with high ropes.</p>
