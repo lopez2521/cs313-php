@@ -1,0 +1,54 @@
+#header {
+	width: 1200px;
+	height: 100px;
+	margin: auto;
+	border-style: dashed;
+	background-color: pink;
+	background-image: url("img/logo.jpg");
+    background-repeat: repeat-x;
+}
+
+body {
+	background-color: red;
+	background: #efe5d0;
+}
+h1 {
+	text-align: center;
+}
+#page {
+	width: 1200px;
+	margin: auto;
+	border-style: solid;
+	background-color: green;
+}
+#checkout {
+	width: 1200px;
+	margin: auto;
+	border-style: solid;
+	background-color: green;
+}
+div.ordertotal {
+  margin-bottom:5px;
+  text-align: center;
+}
+.first {
+	text-align: center;
+}
+#footer {
+	text-align: center;
+	padding: 15px;
+	font-size: 90%;
+	background-color: pink;
+	width: 1200px;
+	margin: auto;
+}
+div.checkout {
+	width: 1200px;
+	margin: auto;
+	
+}
+p.clear {
+	text-align: center;
+}
+
+
