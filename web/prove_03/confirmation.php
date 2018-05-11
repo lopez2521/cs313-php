@@ -13,11 +13,13 @@
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
 	$address = $_POST['address'];
+	$city = $_POST['city'];
 	$zip = $_POST['zip'];
 	?>
 	<div>
 		<?php echo "<br />Your order will ship to: <br />" . $firstname . " " . $lastname;?> <br />
-		<?php echo $address . ", " . $zip?><br />
+		<?php echo $address;?><br />
+		<?php echo $city . ', ' . $zip?><br />
 	</div>
 	<div id="footer">
 		&copy; 2018, Flowers R Us <br />

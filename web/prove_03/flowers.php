@@ -1,3 +1,4 @@
+
 <!-- I had a lot of help from the TA Connor. I literally spent 12 hours trying to make my site work, but when Connor helped me for 15 minutes, it all started to make sense. I can't take full credit though. I have a lot to learn and a long ways to go. -->
 
 <?php
@@ -29,7 +30,8 @@ if (!isset($_SESSION['cart'])) {
 <form action="add.php" method="post">
   <?php
     foreach ($products as $key => $value) {
-      echo $value['label'] . '<input name="' . $key . '" type="number" min="0"><br>';
+      echo $value['label'] . ' ' . $value['price'] . '<input name="' . $key . '" type="number" min="0"><br>';
+      echo '<img src="' . $value['img'] . '"><br /><br />';
     }
   ?>
   <button>Add to Cart</button><br />
