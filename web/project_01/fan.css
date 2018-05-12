@@ -1,0 +1,53 @@
+#header {
+	width: 1200px;
+	height: 100px;
+	margin: auto;
+	border-style: dashed;
+	background-color: gray;
+	background-image: url("img/logo.jpg");
+    background-repeat: repeat-x;
+}
+
+body {
+	background-color: #7784aa;
+	background: #7784aa;
+}
+h1 {
+	text-align: center;
+}
+#page {
+	width: 1200px;
+	margin: auto;
+	border-style: solid;
+	/*background-color: blue;*/
+}
+#checkout {
+	width: 1200px;
+	margin: auto;
+	border-style: solid;
+	background-color: green;
+}
+div.ordertotal {
+  margin-bottom:5px;
+  text-align: center;
+}
+.first {
+	text-align: center;
+}
+#footer {
+	text-align: center;
+	padding: 15px;
+	font-size: 90%;
+	background-color: blue;
+	width: 1200px;
+	margin: auto;
+}
+div.checkout {
+	width: 1200px;
+	margin: auto;
+	
+}
+p.clear {
+	text-align: center;
+}
+
