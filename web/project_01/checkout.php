@@ -49,8 +49,8 @@ echo '<br>' . $subtotal;
         <input type="text" name="lastname" placeholder="Last Name" ><br />
         <label for="address">Address:</label>
         <input type="text" name="address" placeholder="Address" ><br />
-        <label for="city">City</label>
-        <input type="text" name="city" placeholder="City" ><br />
+        <label for="state">State</label>
+        <input type="text" name="state" placeholder="City" ><br />
         <label for="zip">Zip Code:</label>
         <input type="text" name="zip" placeholder="Zip Code" ><br />
       </fieldset>

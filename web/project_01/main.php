@@ -51,11 +51,13 @@ if (!isset($_SESSION['cart'])) {
 <head>
 	<title>Project 01</title>
 	<link rel="stylesheet" type="text/css" href="fan.css" />
+	<script type="text/javascript" src="fans.js"></script>
 </head>
 <body>
-	<form method="post" action="cart.php">
+	<p id="header"></p>
+	<form method="post" action="checkout.php">
 		<div><p>Choose Your Team!</p>
-		<select name="teams" id="teams">
+		<select name="teams" id="teams" onchange="getPic();">
 			<option value="choose">Choose Team</option>
 			<option value="Arizona">Arizona Cardinals</option>
 			<option value="Altanta">Atlanta Falcons</option>
@@ -90,6 +92,9 @@ if (!isset($_SESSION['cart'])) {
 			<option value="Washington">Washington Redskins</option>
 		</select>
 	</div>
+	<div>
+	<img id="teampic"></div>
+
 		<div><p>Team Hat: $19.99</p>
 				<input type="radio" name="hat" value="yes">YES
 				<input type="radio" name="hat" value="no">NO
@@ -123,6 +128,9 @@ if (!isset($_SESSION['cart'])) {
 <input type="submit" name="submit" value="Order Form"> <br />
 </div>
 	</form>
+	<div id="footer">
+		<p>&copy 2018, Fan Fanatic</p>
+	</div>
 
 </body>
 </html>

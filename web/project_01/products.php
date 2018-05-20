@@ -8,8 +8,9 @@
 <?php
 
 $products = array(
-  'assortedflowers' => array(
-    'label' => 'Assorted Flowers',
+  'sanfrancisco' => array(
+    'team' => 'San Francisco',
+    'item1' => ''
     'price' => 49.99,
     'img' => 'img/assorted_roses2.jpg'
   ),

@@ -1,0 +1,1227 @@
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="nfl-mobile nfl-headless">
+<head>
+  <!-- BEGIN DECORATOR mobile-headless -->
+  
+
+<!-- BEGIN INCLUDE one-web/page-title -->
+
+<meta charset="utf-8">
+
+
+<title>YouTube Games | NFL.com</title>
+<!-- END INCLUDE one-web/page-title -->
+
+
+  <!-- Load global JavaScript environment -->
+  
+  
+  
+    <!-- BEGIN INCLUDE global/nfl-constants -->
+    <script>/* SS_TYPE : NONE */
+
+
+
+/* scoresStripSponsorshipTracking :  */
+
+
+
+
+if (window.location.href.search('nfl.com/scores') > -1){ window.useYUIQueryString = true; }
+
+
+/**REMOVE RICE AND SANDERS TEAMS**/
+(function(){
+  function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; ca.length > i; i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+  }
+  var teamCookie = readCookie('userId'),
+        expiration = new Date();
+  if ( teamCookie == null ) { return;}
+  if ( (teamCookie.indexOf('SAN') === -1) && (teamCookie.indexOf('RIC') === -1)) { return; }
+  teamCookie = teamCookie.replace('SAN', '%20');
+  teamCookie = teamCookie.replace('RIC', '%20');
+  expiration.setUTCFullYear(expiration.getUTCFullYear() + 1);
+  document.cookie = "userId=" + teamCookie + "; expires=" + expiration + "; path=/; domain=.nfl.com";
+})();
+
+
+/**USED FOR PHOTOGALLERY PRESBY -- ADDING HERE UNTIL WE CAN GET A CONSOLE OR SOMETHING**/
+<!-- begin /static/html/widgets/config-files/photogallery/presby-config.html -->
+
+<!-- end /static/html/widgets/config-files/photogallery/presby-config.html -->
+try {
+	(function(){
+		var linkInterval = setInterval(function(){ if(nfl != undefined && nfl.Y != undefined){
+		    clearInterval(linkInterval);
+			nfl.use('node', function(Y) {
+				Y.on('contentready', function() {
+					var teamLinks = Y.all('#team-sites-header-bar .team-sites-header-bar-logo-container a');
+					teamLinks.each(function (linkNode) {
+						var abbr = linkNode.get('className').toUpperCase();
+						var href = linkNode.get('href') + "?icampaign=nflcom-header-clublogos-" + abbr;
+						linkNode.set('href', href);
+					});
+				}, '#team-sites-header-bar');
+			});
+		}},100);
+	})();
+} catch(err){}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+window.NFL_GLOBAL_CACHE = {};
+window.NFL_GLOBAL_CACHE.NFL_SUBS = [];
+
+(function (w) {
+  "use strict";
+  var nfl = w.nfl = w.nfl || {};
+  nfl.constants = {
+    ASSET_VERSION:            "7.5",
+    ASSET_BUILD:              "hotfix-7.5.82",
+    IMAGE_PATH:               "http:\/\/i.nflcdn.com\/static\/site\/7.5",
+    STYLE_PATH:               "http:\/\/s.nflcdn.com\/static\/site\/7.5",
+    SCRIPT_PATH:              "http:\/\/s.nflcdn.com\/static\/site\/7.5",
+    FLASH_PATH:               "http:\/\/flash.static.nfl.com\/static\/site\/7.5",
+    ENV:                      "PROD",
+    IS_MOBILE:                false,
+    IS_TABLET:                false,
+    DEVICE_CONTEXT:           "DESKTOP",
+    APP_CONTEXT:              {
+                                app: "",
+                                view: "",
+                                video: ""
+                              },
+    CARRIER:                  "",
+    OAUTH_MANAGER:            "https:\/\/www.nfl.com",
+    ID_MANAGER:               "https:\/\/id2.s.nfl.com",
+    ECM_IMAGE_PATH:           "http:\/\/static.nfl.com\/static\/content\/",
+    SEARCH_DOMAIN:            "search.nfl.com",
+    SITELIFE_URL:             "http:\/\/pluck.nfl.com",
+    SITE_URL:                 "http:\/\/www.nfl.com",
+    FANTASY_DOMAIN:           "http:\/\/fantasy.nfl.com",
+    FANTASY_API:              "http:\/\/api.fantasy.nfl.com",
+    PLAYOFF_CHALLENGE_DOMAIN: "http:\/\/playoffchallenge.fantasy.nfl.com",
+    PLAYOFF_CHALLENGE_API:    "http:\/\/api.playoffchallenge.fantasy.nfl.com",
+    FEEDS_URL:                "http:\/\/feeds.nfl.com",
+    PREDICTPICK_DOMAIN:       "http:\/\/predictpick.nfl.com",
+    FACEBOOK_APP_ID:          "108273802559405",
+    TWITTER_ID:               "DkWLqcP3j8i9wHuJ7fiw",
+    YUI_ENABLED:              true,
+    YUI_COMBO_URL:            "http:\/\/combine.nflcdn.com\/yui\/min2\/index.php",
+    YUI_DEPLOY_URL:           "http:\/\/s.nflcdn.com\/yui",
+    YUI_VERSION:              "3.10.0",
+    NFL_COMBO_ENABLED:        true,
+    NFL_COMBO_URL:            "http:\/\/combine.nflcdn.com\/yui\/min2\/index.php",
+    NFL_MIN_ENABLED:          false,
+    CURRENT_SEASON:           "2017",
+    CURRENT_SEASONTYPE:       "REG",
+    COUNTRY_CODE:             "us",
+    ET_OFFSET:                (function () {
+      var offset  = ("-0400").match(/([\+\-]\d\d)(\d\d)/),
+        hours   = parseInt(offset[1], 10),
+        minutes = parseInt(offset[2], 10);
+
+      return (hours + (minutes / 60)) * 60 * 60 * 1000;
+    }()),
+    GIGYA_CONF: {
+      APIKey: "2_kMCvXUlFCZJhwaNXbxzePaXPYb9T__rgiF5y7EnWuEM5a84cueVv-MkPRKjVFc31",
+      enabledProviders: "facebook,twitter,google,yahoo,messenger",
+      facebookExtraPermissions: "offline_access",
+      cid: w.location.pathname.substr(0, 100),
+      shortURLs: "whenRequired",
+      sessionExpiration: 0
+    },
+    SS_TYPE: 'NONE',
+    AD_CONF: {
+      networkId: '4595',
+      site: '.other',
+      zone: 'labs/rr/youtubegames/youtubegames',
+      zoneUrl: 'url=labs_rr_youtubegames_youtubegames',
+      zoneKeys: 's1=labs;s2=rr;s3=youtubegames;s4=youtubegames',
+      env: '',
+      pageKeyValues: ''
+    },
+    WILDCAT_URL: 'https://www.nfl.com'
+  };
+
+
+
+
+nfl.constants.SS_CONF = nfl.constants.SS_CONF || {};
+
+  nfl.constants.SS_CONF.year = parseInt('2017');
+
+
+  nfl.constants.SS_CONF.responsive = false;
+
+nfl.constants.SS_CONF.trackingSponPixel = '';
+nfl.constants.SS_CONF.sponClickThrough = '';
+nfl.constants.SS_CONF.trackingMobileSponPixel = '';
+nfl.constants.SS_CONF.sponMobileClickThrough = '';
+
+  // set s_account on the window, allow it to be overriden, and set it on nfl.constants too
+  nfl.constants.ANALYTICS = w.s_account = w.s_account || "cbsnfl";
+  nfl.SHARED_VIDEO_URL = "http://combine.nflcdn.com/yui/min2/index.php?7.5hotfix-7.5.82&g=nflui";
+
+}(window));</script>
+    
+      
+      
+      
+      
+      
+        
+      
+    
+	
+	
+    
+    <script src="http://p.nfltags.com/omniture/VisitorAPI.js"></script>
+    <script src="http://s.nflcdn.com/static/site/7.5/scripts/ad.js"></script>
+    
+      
+        <script src="http://combine.nflcdn.com/yui/min2/index.php?7.5hotfix-7.5.82&amp;g=mobilebase,nflui"></script>
+        
+      
+      
+    
+    <!-- END INCLUDE global/nfl-constants -->
+    <!-- BEGIN HEADER ADDITIONS -->
+    
+<meta property="fb:pages"content="68680511262" /> 
+<meta property="fb:pages"content="370174424170" />
+
+<style>
+	
+		body {
+			background: #fff url('http://static.nfl.com/static/content/public/static/img/head/dec-5-2017-background.jpg') no-repeat top center;
+		}
+	
+
+	
+
+	
+	/* remove this after 6.4 when photo.tag serves image on mobile */
+	/*.nfl-mobile .nfl-tag-photo img {
+		width: 100%;
+	}*/
+
+	.nfl-tag-photo table {
+		width: 1px !important;
+	}
+	@media screen and (max-width: 767px) {
+		.nfl-responsive .nfl-tag-photo table {
+			width: 100% !important;
+		}
+	}
+
+
+</style>
+
+
+
+<!-- BEGIN page-header-fix -->
+<style>
+	.article-decorator .content-link,
+	.article-decorator .sponsor-link {top: 0;}
+</style>
+<!-- END page-header-fix -->
+
+
+
+
+
+
+
+<script>
+	(function(win){
+		// This code disables HP personalization
+		nfl.Y.use('event-custom', function(Y){
+			var pathName = win.location.pathname,
+				isDesktop = nfl.constants.DEVICE_CONTEXT === 'DESKTOP';
+			if(isDesktop && (pathName === '/' || pathName.substr(0, 5) === '/home')){
+				nfl.Y.Global.once('home:nflNowVideoLoaded', function(e){
+					nfl.Y.Global.detachAll('home:nflNowVideoLoaded');
+				});
+			}
+		});
+	})(window);
+</script>
+
+<!-- BEGIN TAG javascript files="modules/geocode/geocode.js,modules/nfl-user/nfl-user.js,modules/nfl-subscriptions/nfl-subscriptions.js" type="" -->
+<!-- 
+	nfl_combo_enabled: true
+	nfl_combo_url:     http://combine.nflcdn.com/yui/min2/index.php
+	nfl_min_enabled:   false
+	use_debug:         false
+-->
+
+	
+	
+	
+		
+		<script src="http://combine.nflcdn.com/yui/min2/index.php?7.5hotfix-7.5.82&amp;b=yui3%2Fstatic%2F7.5%2Fscripts&amp;f=modules/geocode/geocode.js,modules/nfl-user/nfl-user.js,modules/nfl-subscriptions/nfl-subscriptions.js"></script>
+	
+	
+
+<!-- END TAG javascript -->
+
+<script>
+    (function(){
+        YUI.add("hp-subscriptions", (function(Y) {
+          "use strict";
+          var headerNode;
+
+          var getHeaderNode = (function () {
+            if (window.Y && window.Y.NFL && window.Y.NFL.Header2012) {
+              headerNode = window.Y.NFL.Header2012.headerNode;
+            }
+
+            if (headerNode) {
+              return personalizeSubscriptions();
+            }
+          });
+
+          /**
+          @namespace Y.NFL.Header2012
+          @method PersonalizeSubscriptions
+          @static
+          */
+          var personalizeSubscriptions = (function () {
+            return Y.namespace("NFL.Header2012").PersonalizeSubscriptions = function() {
+              var GAME_PASS_SECTION_WIDTH, LAUNCH_BUTTON, LEARN_MORE_BUTTON, RENEW_BUTTON, SUBSCRIPTIONS, applySubProductsVisibility, headerSubProducts, subscriptionKey, subscriptions, uris, useJSONP,
+                _this = this;
+              RENEW_BUTTON = "<span class='button button-red'>RENEW</span>";
+              LEARN_MORE_BUTTON = "<span class='button button-gray'>LEARN MORE</span>";
+              LAUNCH_BUTTON = "<span class='button button-green'>LAUNCH</span>";
+              GAME_PASS_SECTION_WIDTH = 945;
+              SUBSCRIPTIONS = {
+                "PRESEASON_LIVE": {
+                  active: false,
+                  selector: "preseasonLiveClass",
+                  geoURI: "/gamecenter/preseasonLive"
+                },
+                "GAME_PASS": {
+                  active: false,
+                  selector: "gamePassClass",
+                  geoURI: "/gamecenter/gamePass"
+                },
+                "GAME_REWIND": {
+                  active: false,
+                  selector: "gameRewindClass",
+                  geoURI: "/gamecenter/gameRewind"
+                },
+                "NETWORK_ONLINE": {
+                  active: false,
+                  selector: "nflnOnlineClass",
+                  geoURI: "/gamecenter/nflNetworkOnline"
+                },
+                "AUDIO_PASS": {
+                  active: false,
+                  selector: "audioPassClass",
+                  geoURI: null
+                }
+              };
+
+              setTimeout(function(){
+                  var gamePassNode, subscription, subscriptionKey, subscriptionNode, _i, _len, _ref, _ref2, _results;
+                  gamePassNode = headerNode.one("div.content.game-pass");
+                  subscriptions = [];
+                  console.info('hp-subscriptions overwritten');
+                  for (_i = 0, _len = subscriptions.length; _i < _len; _i++) {
+                    subscription = subscriptions[_i];
+                    if ((_ref = SUBSCRIPTIONS[subscription]) != null) _ref.active = true;
+                  }
+                  _results = [];
+                  for (subscriptionKey in SUBSCRIPTIONS) {
+                    subscription = SUBSCRIPTIONS[subscriptionKey];
+                    subscriptionNode = gamePassNode != null ? gamePassNode.one("." + subscription.selector) : void 0;
+                    _results.push(subscriptionNode != null ? (_ref2 = subscriptionNode.one("span.button")) != null ? _ref2.replace(subscription.active ? LAUNCH_BUTTON : LEARN_MORE_BUTTON) : void 0 : void 0);
+                  }
+                  return _results;
+
+              }, 1000);
+
+              /**
+              @method applySubProductsVisibility
+              @private
+              @param String - selectors - comma-separated CSS classes string
+              */
+              applySubProductsVisibility = function(selectors) {
+                var columnWidthRegExp, columns, gamePassSectionNode, lastColumn, sectionWidth, subscription, subscriptionKey;
+                for (subscriptionKey in SUBSCRIPTIONS) {
+                  subscription = SUBSCRIPTIONS[subscriptionKey];
+                  if (subscription.geoURI === null) {
+                    headerNode.all("." + subscription.selector).setStyle("visibility", "visible");
+                  } else if (selectors.indexOf(subscription.selector) >= 0) {
+                    headerNode.all("." + subscription.selector).each(function(elm) {
+                      if (!elm.hasClass("force-hide")) {
+                        return elm.setStyle("visibility", "visible");
+                      } else {
+                        return elm.remove();
+                      }
+                    });
+                  } else {
+                    headerNode.all("." + subscription.selector).remove();
+                  }
+                }
+                /**
+                Game pass section node columns needs to fill up
+                the entire content container, if there are less than 3 sub-products
+                available to the visitor based on their geo-location. The last columns
+                width would need to fill up the remainder of the width.
+                */
+                gamePassSectionNode = headerNode.one(".content.game-pass");
+                columnWidthRegExp = /column-(\d+)/;
+                if (gamePassSectionNode) {
+                  sectionWidth = 0;
+                  columns = gamePassSectionNode.all("div.column");
+                  columns.each(function(elm, index) {
+                    if (columnWidthRegExp.test(elm.get("className")) && index !== (columns.size() - 1)) {
+                      return sectionWidth += parseInt(RegExp.$1, 10);
+                    }
+                  });
+                  if (GAME_PASS_SECTION_WIDTH - sectionWidth > 0) {
+                    lastColumn = columns.item(columns.size() - 1);
+                    lastColumn.set("className", "column column-" + (GAME_PASS_SECTION_WIDTH - sectionWidth));
+                  }
+                }
+              };
+              headerSubProducts = Y.Cookie.get("headerSubProducts");
+              if (headerSubProducts) {
+                console.info("Sub products visibility: " + headerSubProducts);
+                applySubProductsVisibility(headerSubProducts);
+              } else {
+                /**
+                Get the geocode response
+                */
+                uris = [];
+                for (subscriptionKey in SUBSCRIPTIONS) {
+                  if (SUBSCRIPTIONS[subscriptionKey]["geoURI"]) {
+                    uris.push(SUBSCRIPTIONS[subscriptionKey]["geoURI"]);
+                  }
+                }
+                useJSONP = true;
+                Y.getNFLGeoCode(uris.join(","), function(result) {
+                  var classRule, cookiedResults, d, expirationDate, results, subProductResult, _i, _len;
+                  try {
+                    results = result instanceof String ? Y.JSON.parse(result) : result;
+                    cookiedResults = [];
+                    if (results instanceof Array) {
+                      for (_i = 0, _len = results.length; _i < _len; _i++) {
+                        subProductResult = results[_i];
+                        classRule = subProductResult.classRule;
+                        if (classRule) cookiedResults.push(classRule);
+                      }
+                    }
+                    if (cookiedResults.length > 0) {
+                      applySubProductsVisibility(cookiedResults.join(","));
+                      try {
+                        d = new Date();
+                        expirationDate = new Date(d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000)));
+                        Y.Cookie.set("headerSubProducts", cookiedResults.join(","), {
+                          path: "/",
+                          domain: ".nfl.com",
+                          expires: expirationDate
+                        });
+                      } catch (error) {
+                        return console.error("Error setting headerSubProducts cookie " + error);
+                      }
+                    }
+                   else {
+                    applySubProductsVisibility([]);
+                   }
+                  } catch (error) {
+                    return console.error(error);
+                  }
+                }, useJSONP);
+              }
+            };
+          });
+
+          getHeaderNode();
+          
+        }), "1.0.0", {
+          requires: ["nfl-user", "nfl-subscriptions", "geocode", "node", "json-parse", "cookie"]
+        });
+    })();
+</script>
+    <!-- END HEADER ADDITIONS -->
+  
+
+
+
+  <!-- Head elements shared with partners -->
+  
+<!-- BEGIN INCLUDE one-web/mobile-head -->
+
+<!-- Load custom fonts -->
+
+<!-- BEGIN TAG custom-fonts fonts="NFLEndzoneSansCondMedium,NFLEndzoneTechBold,nflicons" -->
+
+
+
+<script>
+(function () {
+	var NOOP = function () {},
+		embedFonts = function() {
+			if (!window.YUI) {
+				return setTimeout(embedFonts, 500);
+			}
+			
+  				YUI.add("font-endzonesans-condmedium", NOOP);
+				
+  				YUI.add("font-endzonetech-bold", NOOP);
+				
+  				YUI.add("font-nflicons", NOOP);
+				
+		};
+	embedFonts();
+}());
+</script>
+
+
+
+
+
+
+
+
+<!-- BEGIN TAG stylesheet files="font-endzonesans-condmedium/font-endzonesans-condmedium.css,font-endzonetech-bold/font-endzonetech-bold.css,font-nflicons/font-nflicons.css" media="all" type="" -->
+
+
+	
+	
+	
+			
+		
+		<link href="http://combine.nflcdn.com/yui/min2/index.php?7.5hotfix-7.5.82&amp;b=yui3%2Fstatic%2F7.5%2Fscripts%2Fmodules&amp;f=font-endzonesans-condmedium/font-endzonesans-condmedium.css,font-endzonetech-bold/font-endzonetech-bold.css,font-nflicons/font-nflicons.css" rel="stylesheet" media="handheld, all"/>
+		
+	
+	
+
+
+<!-- END TAG stylesheet -->
+
+<!-- END TAG custom-fonts -->
+
+
+<!-- Load stylesheet -->
+
+
+
+
+
+
+
+
+<!-- BEGIN TAG stylesheet files="decorators/one-web/base.css" media="all" type="" -->
+
+
+	
+	
+	
+	
+		
+		  
+			<link href="http://s.nflcdn.com/static/site/7.5/styles/decorators/one-web/base.css?7.5hotfix-7.5.82" rel="stylesheet" media="handheld, all" />
+  		
+		
+	
+
+
+<!-- END TAG stylesheet -->
+
+
+
+
+
+
+
+
+
+<!-- BEGIN TAG stylesheet files="decorators/one-web/print.css" media="print" type="" -->
+
+
+	
+	
+	
+	
+		
+		  
+			<link href="http://s.nflcdn.com/static/site/7.5/styles/decorators/one-web/print.css?7.5hotfix-7.5.82" rel="stylesheet" media="print" />
+  		
+		
+	
+
+
+<!-- END TAG stylesheet -->
+
+
+<!-- Allow the content to adjust to the user's viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+<meta name="twitter:site" content="@NFL"/>
+
+<!-- Shortcut &amp; home screen icons -->
+<!-- BEGIN INCLUDE one-web/favicons -->
+<link rel="shortcut icon" href="http://i.nflcdn.com/static/site/7.5/img/favicon.png?7.5hotfix-7.5.82" type="image/png" />
+<link rel="apple-touch-icon" href="http://i.nflcdn.com/static/site/7.5/img/apple/apple-touch-icon-57x57.png?7.5hotfix-7.5.82" />
+<link rel="apple-touch-icon" sizes="72x72" href="http://i.nflcdn.com/static/site/7.5/img/apple/apple-touch-icon-72x72.png?7.5hotfix-7.5.82" />
+<link rel="apple-touch-icon" sizes="114x114" href="http://i.nflcdn.com/static/site/7.5/img/apple/apple-touch-icon-114x114.png?7.5hotfix-7.5.82" />
+<!-- END INCLUDE one-web/favicons -->
+
+
+<!-- END INCLUDE one-web/mobile-head -->
+
+
+  <meta charset="utf-8">
+<meta name='viewport' content='content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0' />
+<meta name="decorator" content="mobile-headless" />
+<meta property="og:title" content="YouTube Games" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="http://www.nfl.com/static/content/public/static/html/labs/rr/youtubegames/" />
+<meta property="og:site_name" content="NFL.com" />
+<meta property="og:description" content="YouTube Games" />
+<meta property="og:url" content="http://www.nfl.com/youtubegames" />
+<meta property="fb:app_id" content="" />
+
+<!-- BEGIN TAG custom-fonts fonts="NFLEndzoneSansMedium, NFLEndzoneSansBold, NFLEndzoneSlabLight, NFLEndzoneSlabCondMedium" -->
+
+
+
+<script>
+(function () {
+	var NOOP = function () {},
+		embedFonts = function() {
+			if (!window.YUI) {
+				return setTimeout(embedFonts, 500);
+			}
+			
+  				YUI.add("font-endzonesans-medium", NOOP);
+				
+  				YUI.add("font-endzonesans-bold", NOOP);
+				
+  				YUI.add("font-endzoneslab-light", NOOP);
+				
+  				YUI.add("font-endzoneslab-condmedium", NOOP);
+				
+		};
+	embedFonts();
+}());
+</script>
+
+
+
+
+
+
+
+
+<!-- BEGIN TAG stylesheet files="font-endzonesans-medium/font-endzonesans-medium.css,font-endzonesans-bold/font-endzonesans-bold.css,font-endzoneslab-light/font-endzoneslab-light.css,font-endzoneslab-condmedium/font-endzoneslab-condmedium.css" media="all" type="" -->
+
+
+	
+	
+	
+			
+		
+		<link href="http://combine.nflcdn.com/yui/min2/index.php?7.5hotfix-7.5.82&amp;b=yui3%2Fstatic%2F7.5%2Fscripts%2Fmodules&amp;f=font-endzonesans-medium/font-endzonesans-medium.css,font-endzonesans-bold/font-endzonesans-bold.css,font-endzoneslab-light/font-endzoneslab-light.css,font-endzoneslab-condmedium/font-endzoneslab-condmedium.css" rel="stylesheet" media="handheld, all"/>
+		
+	
+	
+
+
+<!-- END TAG stylesheet -->
+
+<!-- END TAG custom-fonts -->
+
+  <!-- END DECORATOR mobile-headless -->
+</head>
+<body  class="">
+  <!-- BEGIN DECORATOR mobile-headless -->
+  
+
+
+
+<!-- BEGIN TAG javascript files="decorators/one-web/mobile-only.js,nfl.carrier.js,analytics/multiplatform.js,nfl.omniture.js" type="" -->
+<!-- 
+	nfl_combo_enabled: true
+	nfl_combo_url:     http://combine.nflcdn.com/yui/min2/index.php
+	nfl_min_enabled:   false
+	use_debug:         false
+-->
+
+	
+	
+	
+		
+		<script src="http://combine.nflcdn.com/yui/min2/index.php?7.5hotfix-7.5.82&amp;b=yui3%2Fstatic%2F7.5%2Fscripts&amp;f=decorators/one-web/mobile-only.js,nfl.carrier.js,analytics/multiplatform.js,nfl.omniture.js"></script>
+	
+	
+
+<!-- END TAG javascript -->
+
+  <div style="display:none">
+
+	
+
+	
+	<script type="text/javascript">
+	var loggingOff = true,
+	noOmnitureCall = noOmnitureCall || false;
+//applyFireBugX();
+window.isPageTypeError && isPageTypeError();
+//moved all the functions into s_code_common.js until we can overhaul this atrocity
+
+/**
+* s_analytics.trackLinkClick will send a request to omniture indicating a minor level page event occurred
+* @param {String} _propNum is a number provided by Marketing.  ex, prop1, prop14, prop35, etc.
+* @param {String} _propValue is the value to place within the prop.  ex, Avatar, Friends_alerts, Message_Alerts, Global_Alerts, etc.
+* TO DO: update this function so it accepts multiple prop values.
+*/
+s_analytics.trackLinkClick = function(_propNum, _propValue) {
+	var s_analytics = s_gi(s_account),
+	    propName    = 'prop' + _propNum;
+	s_analytics.linkTrackEvents = "";
+	s_analytics.linkTrackVars = "prop" + _propNum;
+	s_analytics[propName] = _propValue;
+	s_analytics.events = '';
+	s_analytics.tl(true, 'o', _propValue);
+	// should empty out the track properties after the call is made.  this is a directive from omniture.
+	s_analytics.linkTrackEvents = "";
+	s_analytics.linkTrackVars = "";
+}
+
+	/* analytics_file: blank.js */
+	function initAnalytics() { 
+	isLog('hello from initAnalytics() written in blank.js');
+	// the below code was added to ensure we didn't forget to tag any pages
+	var section = 'nfl';
+	var pathname = window.location.pathname;
+	var channel = pathname.split('/')[1];
+	var pageName = '';
+	var heir = '';
+	var queryString = window.location.search.substring(1);
+	var sortQueryStringParams = function(str) {
+	    var sortedStr = '';
+		var strArray = str.split("&");
+		if (strArray.length > 1) {
+			strArray.sort();
+		}
+		for (var i = 0; i < strArray.length; i++) {
+			var pos = strArray[i].indexOf('=');
+			if (pos == -1) continue;
+			var argname = strArray[i].substring(0, pos);
+			if (argname == "campaign" || argname == "icampaign") continue;
+			sortedStr += strArray[i];
+		}
+		return sortedStr;
+	}
+	var formatPathName = function(str) {
+		str = str.replace(/\..+$/, '');
+		str = str.replace(/\//, '');
+		if (str.length == 0) str = 'landing';
+		return formatStr(str);
+	}
+	var formatPageName = function(section, str, query) {
+		str = section + ":" + str.replace(/\//g, ':');
+		if (str.indexOf(':') == -1) {str = str + ':landing';} 
+		if (query.length > 0) {
+			str += ":" + query.replace(/\&/g, ':');
+		}
+		return formatStr(str);
+	}
+	var formatHierarchy = function(section, str, query) {
+		str = section + ":" + str.replace(/\//g, '|');
+		if (str.indexOf('|') == -1) {str = str + '|landing';}  
+		if (query.length > 0) {
+			str += "|" + query.replace(/\&/g, '|');
+		}
+		return formatStr(str);
+	}
+	var setOmnitureTags = function(ch, pn, hr) {
+		s_analytics.server='nfl.com';	
+		s_analytics.prop22='www.nfl.com'; 
+		s_analytics.channel = ch; 
+		s_analytics.eVar3 = ch;
+		s_analytics.pageName = pn; 
+		s_analytics.eVar2 = pn;
+		s_analytics.hier1 = hr;  
+		s_analytics.prop5 = hr;
+		s_analytics.eVar4 = hr;
+	}	
+	var formatStr = function(str) {
+		str = str.replace(/;jsessionid=(.+)/, ""); //strip out jsessionid var that gets added by server at random times
+		return str;
+	}
+	pathname = formatPathName(pathname);
+	queryString = sortQueryStringParams(queryString);
+	pageName = formatPageName(section, pathname, queryString);
+	hier = formatHierarchy(section, pathname, queryString);
+	setOmnitureTags(channel, pageName, hier);
+} 
+	function applyFooter() {  
+	if (noOmnitureCall == true) return;
+	/******* ****** DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+	try { 
+		var s_code = s_analytics.t();
+		if (s_code) document.write(s_code);
+	} catch(e) { 
+		console.warn(e);
+	}
+}
+	/* Fix for Omniture code which fails VML element check. */
+(function(w) { 
+	if(w.Y && w.Y.UA && w.Y.UA.ie && w.Y.UA.ie <= 8){
+		var fn = function(){
+			var orig = s_analytics.ot; 
+			if(!orig){
+				setTimeout(fn, 1000);
+			}else{
+			   s_analytics.ot = function(el) { 
+			       return el.tagUrn ? '' : ('shape,group,path,rect,roundrect,line,polyline,oval,image,curve,arc'.indexOf(el.tagName) != -1 ? '' : orig(el)); 
+			   };
+			}
+		}
+		fn();
+	}
+})(window);
+
+	</script>
+	
+
+</div>
+
+  <div id="wrap">
+    <div id="doc">
+	  <!-- Show top-level ads -->
+	  
+  	  <section id="bd" role="main">
+        <!-- BEGIN TAG custom-fonts fonts="NFLEndzoneSansLight,NFLEndzoneSansBold,NFLEndzoneSlabLight,NFLEndzoneSlabBold" -->
+
+
+
+<script>
+(function () {
+	var NOOP = function () {},
+		embedFonts = function() {
+			if (!window.YUI) {
+				return setTimeout(embedFonts, 500);
+			}
+			
+  				YUI.add("font-endzonesans-light", NOOP);
+				
+  				YUI.add("font-endzonesans-bold", NOOP);
+				
+  				YUI.add("font-endzoneslab-light", NOOP);
+				
+  				YUI.add("font-endzoneslab-bold", NOOP);
+				
+		};
+	embedFonts();
+}());
+</script>
+
+
+
+
+
+
+
+
+<!-- BEGIN TAG stylesheet files="font-endzonesans-light/font-endzonesans-light.css,font-endzonesans-bold/font-endzonesans-bold.css,font-endzoneslab-light/font-endzoneslab-light.css,font-endzoneslab-bold/font-endzoneslab-bold.css" media="all" type="" -->
+
+
+	
+	
+	
+			
+		
+		<link href="http://combine.nflcdn.com/yui/min2/index.php?7.5hotfix-7.5.82&amp;b=yui3%2Fstatic%2F7.5%2Fscripts%2Fmodules&amp;f=font-endzonesans-light/font-endzonesans-light.css,font-endzonesans-bold/font-endzonesans-bold.css,font-endzoneslab-light/font-endzoneslab-light.css,font-endzoneslab-bold/font-endzoneslab-bold.css" rel="stylesheet" media="handheld, all"/>
+		
+	
+	
+
+
+<!-- END TAG stylesheet -->
+
+<!-- END TAG custom-fonts -->
+ 
+
+
+
+
+
+
+<div id="header">
+	<a class="homeLink" href="http://www.nfl.com">  <span><</span>  NFL.com</a>
+	<img src="http://www.nfl.com/content/public/static/html/labs/rr//varsityblues/img/img_headerLogo.png" alt="NFL" />
+	<div class="sharing">
+		
+
+
+
+
+
+
+	<div class="yui3-share-buttons yui3-share-buttons-dark" style="display: none;" id="header-share">
+		<a href="https://plus.google.com/share?url=" class="share-button share-gplus nflicon gplus" data-mobile="false" data-width="600" data-height="600" target="sharing"></a>
+		<a href="http://www.facebook.com/share.php?u=" class="share-button share-facebook nflicon facebook" data-mobile="false" data-width="600" data-height="400" target="sharing"></a>
+		<a href="http://www.twitter.com/share?url=" class="share-button share-twitter nflicon twitter" data-mobile="false" data-width="600" data-height="300" target="sharing"></a>
+		Share
+	</div>
+
+<script>
+	nfl.Y.use('node','share-buttons',function(Y){
+		var _n = Y.one('#header-share');
+		var _gplus = _n.one('.share-gplus'),
+		_fb = _n.one('.share-facebook'),
+		_tw = _n.one('.share-twitter');
+		
+		_n.plug(Y.ShareButtons,{
+			containerId: 'header-share',
+			isMobile: false, 
+			nodes: {
+				gplus: _gplus,
+				facebook: _fb,
+				twitter: _tw
+			}
+		});
+	});
+</script>
+
+	</div><!--end .sharing-->
+</div><!--end #header-->
+<style type="text/css">
+html, body{ background: #ffffff !important; }
+div#doc { width: 100%; }
+#bd { display: block; }
+#header { background-color: #001e62; position: relative; top: 0; left: 0; width: 100%; height: 58px; }
+#header a.homeLink { position: absolute; top: 20px; left: 10px; text-decoration: none; font-weight: bold; color: #ffffff; font-family: "EndzoneSansCond", sans-serif; font-size: 16px; }
+#header a.homeLink span { color: #ffffff; }
+#header img { display: block; margin: 0 auto; }
+#header div.sharing { position: absolute; top: 10px; right: 10px; width: 150px; height: 40px; overflow: hidden; color: #ffffff !important; }
+#header div.sharing { position: absolute; top: 10px; right: 10px; width: 150px; height: 40px; overflow: hidden !important; }
+#header div.sharing #header-share { color: #ffffff; }
+#header div.sharing .share-button { color: #ffffff !important; }
+#header div.sharing .share-button:hover { color: #a2aaad !important; }
+@media (max-width: 500px) {
+	#header .sharing {width: 95px !important;}
+}
+/* prevents parent container from callapsing */
+.clearfix:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+.relativeZero { position: relative; top: 0px; left: 0px; }
+</style>
+<div class="hero">
+	<!--<img src="http://www.nfl.com/content/public/static/html/labs/rr/smalltalkfreezone/img/STFZ_hero.jpg" alt="Small Talk Free Zone"/>-->
+</div><!--end .hero-->
+
+
+<br><br>
+
+<style>
+	.copy { 
+		width: 90%;
+		font-size: 1.5em;
+		font-weight: bold;
+	}
+	.team-container { 
+		width: 48%;
+		display: inline-block;
+		margin-top: 15px;
+	}
+
+	.team-conference { 
+		width: 12.5%;
+		position: relative;
+		font-size:1vw;
+		vertical-align: top;
+	}
+
+	.team-conference h1 {
+		font-size: 1.5em;
+		text-decoration: underline;
+		font-weight: bold;
+	}
+
+	.team-logo {
+		width: 100%;
+		max-height: 10vw;
+	}
+
+	@media ( max-width: 768px ){
+		.team-conference { 
+			font-size:2vw;
+		}
+
+		.team-container { 
+			width: 100%;
+		}
+
+		.team-container.nfc tr{
+			border-top: 1px solid black;
+		}
+
+		.team-container.nfc td {
+			padding-top: 1em;
+		}
+
+		.team-logo {
+			max-height: 15vw;
+		}
+	}
+
+</style>
+<div class="copy">
+<br>
+<i>For the first time ever, the NFL will upload of some of the greatest games in history to the NFL's official YouTube channel!  Click on a team logo below and cast your vote for your favorite games of all time.</i>
+</div>
+
+<div class="copy">
+
+	<table class="team-container">
+		<tr align="center"><td colspan="4"></td></tr>
+		<tr align="center">
+			<td class="team-conference afc">
+				<h1>AFC EAST</h1>
+				<a href="https://www.facebook.com/BuffaloBills/posts/10154063432040659"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/BUF.svg"></a>
+				<a href="https://www.facebook.com/MiamiDolphins/posts/10153821183489611"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/MIA.svg"></a>
+				<a href="https://www.facebook.com/newenglandpatriots/posts/10154335247297372"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/NE.svg"></a>
+				<a href="https://www.facebook.com/Jets/posts/10153556437241231"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/NYJ.svg"></a>
+				<br />					
+			</td>
+
+			<td class="team-conference">
+				<h1>AFC NORTH</h1>
+				<a href="https://www.facebook.com/NFL/posts/10153963145336263"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/BAL.svg"></a>
+				<a href="https://www.facebook.com/bengals/posts/10154238654048416"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/CIN.svg"></a>
+				<a href="https://www.facebook.com/clevelandbrowns/posts/10154366889214684"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/CLE.svg"></a>
+				<a href="https://www.facebook.com/steelers/posts/10154392341539905"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/PIT.svg"></a>
+				<br />					
+			</td>
+
+			<td class="team-conference">
+				<h1>AFC SOUTH</h1>	
+				<a href="https://www.facebook.com/HoustonTexans/posts/10153751700206314"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/HOU.svg"></a>
+				<a href="https://www.facebook.com/colts/posts/10154799790545110"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/IND.svg"></a>
+				<a href="https://www.facebook.com/jacksonvillejaguars/posts/10153926577903863"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/JAX.svg"></a>
+				<a href="https://www.facebook.com/titans/posts/10154233704623851"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/TEN.svg"></a>
+				<br />					
+			</td>
+
+			<td class="team-conference">
+				<h1>AFC WEST</h1>
+				<a href="https://www.facebook.com/DenverBroncos/posts/10154327734226318"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/DEN.svg"></a>
+				<a href="https://www.facebook.com/KansasCityChiefs/posts/10154243170263373"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/KC.svg"></a>
+				<a href="https://www.facebook.com/Raiders/posts/1253917834638701"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/OAK.svg"></a>
+				<a href="https://www.facebook.com/chargers/posts/10153999988012713"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/SD.svg"></a>
+				<br />					
+			</td>
+		</tr>
+	</table>
+	<table class="team-container nfc">
+		<tr align="center">
+			<td class="team-conference">
+				<h1>NFC EAST</h1>
+				<a href="https://www.facebook.com/NFL/posts/10153963373941263"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/DAL.svg"></a>
+				<a href="https://www.facebook.com/newyorkgiants/posts/10154564071863455"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/NYG.svg"></a>
+				<a href="https://www.facebook.com/NFL/posts/10153963157686263 "><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/PHI.svg"></a>
+				<a href="https://www.facebook.com/redskins/posts/10154436332474574"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/WAS.svg"></a>
+				<br />					
+			</td>
+			
+			<td class="team-conference">
+				<h1>NFC NORTH</h1>
+				<a href="https://www.facebook.com/ChicagoBears/posts/10154279448619452"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/CHI.svg"></a>
+				<a href="https://www.facebook.com/DetroitLions/posts/10154189452393605"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/DET.svg"></a>
+				<a href="https://www.facebook.com/Packers/posts/10154020953130073"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/GB.svg"></a>
+				<a href="https://www.facebook.com/minnesotavikings/posts/10154227125277836"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/MIN.svg"></a>
+				<br />					
+			</td>
+
+			<td class="team-conference">
+				<h1>NFC SOUTH</h1>
+				<a href="https://www.facebook.com/atlantafalcons/posts/10153831106572842"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/ATL.svg"></a>
+				<a href="https://www.facebook.com/CarolinaPanthers/posts/1209931302353207"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/CAR.svg"></a>
+				<a href="https://www.facebook.com/neworleanssaints/posts/1076423632405201"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/NO.svg"></a>
+				<a href="https://www.facebook.com/tampabaybuccaneers/posts/10154288416359595"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/TB.svg"></a>
+				<br />					
+			</td>
+
+			<td class="team-conference">
+				<h1>NFC WEST</h1>
+				<a href="https://www.facebook.com/arizonacardinals/posts/10154271743867298"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/ARI.svg"></a>
+				<a href="https://www.facebook.com/Rams/posts/10154864793798484"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/LA.svg"></a>
+				<a href="https://www.facebook.com/SANFRANCISCO49ERS/posts/10153522761526875"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/SF.svg"></a>
+				<a href="https://www.facebook.com/Seahawks/posts/10153593686991722"><img class="team-logo" src="http://i.nflcdn.com/static/site/7.4/img/logos/svg/teams/SEA.svg"></a>
+				<br />					
+			</td>
+		</tr>		
+	</table>  
+</div><!--end .copy-->
+
+
+<div id="footerContainer">
+	<div id="footer">
+		<img src="http://www.nfl.com/content/public/static/html/labs/rr/humbleroots/img/img_nflShield.png" alt="NFL"/>
+		<div class="copy">
+			&#169;2016 NFL Enterprises LLC. NFL and the NFL shield design are registered trademarks of the National Football League.The team names, logos and uniform designs are registered trademarks of the teams indicated. All other NFL-related trademarks are trademarks of the National Football League. NFL footage &#169; NFL Productions LLC.
+		</div><!--end .copy-->
+	</div><!--end #footer-->
+</div><!--end #footerContainer-->
+<style type="text/css">
+#footerContainer { background: #b4b4b4; }
+#footerContainer #footer { max-width: 985px; margin: 0px auto; }
+#footerContainer #footer img { display: block; margin: 0px auto; }
+#footerContainer #footer .copy { max-width: 940px; margin-bottom: 0px; padding-bottom: 20px; font-size: 14px; line-height: 18px; }
+</style>
+<style>
+.hero { width: 100%; background: ; color: #666666; font-size: 12px; margin-bottom: 0px; }
+.hero img { width: 100%;}
+.videoTitle { background-size: 60%; line-height: 40px;
+width: 100%; max-width: 985px;
+margin: 0 auto -5px auto;
+background: url('http://www.nfl.com/content/public/static/html/labs/rr/youtubegames/img/bg_videoTitle.jpg') center center no-repeat ;
+height: 40px;
+padding: 0 16.5%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; ms-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; }
+.videoTitle2 { background-size: 60%; line-height: 40px;
+width: 100%; max-width: 985px;
+margin: 0 auto 10px auto;
+background: url('http://www.nfl.com/content/public/static/html/labs/rr/youtubegames/img/bg_videoTitle2.jpg') center center no-repeat ;
+height: 40px;
+padding: 0 16.5%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; ms-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; }
+.videoCaption{line-height: 22px; font-size: 18px; font-style: italic; font-family: "Trebuchet MS", Helvetica, sans-serif; color: #b2b2b2; padding: 10px; width: 68%; max-width: 619px; margin: 0 auto; }
+.videoDivider { height: 5px; border: solid 4px #001E62; max-width: 700px; width: 90%; margin: 0 auto 40px auto; }
+/*elastic video*/
+.videoDivider2 { height: 5px; border: solid 2px ##A6192E; max-width: 700px; width: 90%; margin: 0 auto 40px auto; }
+.videoOuter { position: relative; border: 1px solid #ffffff; width: 615px; max-width: 80%; margin: 0 auto -25px auto; }
+.videoOuter:after { margin-top: 56.25%; position: relative; display: block; content: ""; z-index: 1; }
+.videoInner { border: 1px solid #ffffff; width: 100%; height: 100%; position:absolute; }
+.videoInner .nfl-video-tag { width: 100%; height: 100%; }
+.videoInner .yui3-nfl-video { width: 100%; height: 100%; }
+.copy { margin: 0px auto; color: #000000; font-family: "NFLEndzoneSansLight"; font-size: 17px; line-height: 30px;  margin-bottom: 40px; position: relative; top: 0; left: 0; }
+.copy2 { margin: 0px auto; color: #A6192E; background: ; font-family: "NFLEndzoneSansBold"; font-size: 22px; line-height: 20px; padding-left: px; padding-right: 4px;  margin-bottom: 20px; margin-top: 20px; position: relative; top: 0; left: 0; }
+.copy3 { margin: 0px auto; color: #333333; background: ; font-family: "NFLEndzoneSansBold"; font-size: 16px; line-height: 20px; padding-left: px; padding-right: px;  margin-bottom: px; margin-top: px; position: relative; top: 0; left: 0; }
+.copy .author { padding: ; color: #000000; font-family: "NFLEndzoneSansLight"; font-size: 18px; line-height: 40px; font-weight: ; font-style: ; background: ; width: 220px;; }
+.copy .author span { color: #000000; font-size: 22px; font-weight: ; }
+.copy .pullquote.center { color: #2a433a; font-family: "NFLEndzoneSlabBold"; font-size: 26px; line-height: 65px; display: block !important; margin: 0 auto; margin-bottom: 20px; text-align: left;}
+.copy div.pullquote span.quote { font-size: 120px; font-family: "NFLEndzoneSlabBold"; vertical-align: bottom; line-height: 45px; color: #ffc20e;}
+.copy div.pullquote .person { text-align: right; color: #2a433a; }
+.copy a { text-decoration: none; color: #0085c0; }
+.copy .initial { float: left; color: #ef4123; font-size: 100px; line-height: 40px; padding-top: 25px; padding-right: 8px; padding-left: 3px; padding-bottom:5 px; font-family: NFLEndzoneSansMedium; } { font-size:20px; font-family: "NFLEndzoneSansLight"; color: #ffffff; background: #353c73; border: solid #927c4d; margin:0; padding-right:3px; padding-left: 3px; line-height:33px; margin-right:5px; }
+.copy .initial2 { float: left; color: #d4451f; font-size: 100px; line-height: 22px; padding-top: 10px; padding-right: 8px; padding-left: 3px; padding-bottom:5 px; font-family: NFLEndzoneSansMedium; } { font-size:20px; font-family: "NFLEndzoneSansLight"; color: #ffffff; background: #353c73; border: solid #927c4d; margin:0; padding-right:3px; padding-left: 3px; line-height:33px; margin-right:5px; }
+.copy .photo {  padding: 10px 0; border-top: ; border-bottom: ; margin-top: 10px; margin-bottom: 10px; width: ; position: relative;}
+.copy .photo img { width: 100%; }
+.copy .photo img:hover { cursor: }
+.copy .photo .caption {  background: #001E62;  display: none; line-height: 20px; font-size: 14px; font-style: ; font-family: "NFLEndzoneSansMedium"; color: #FFFFFF; padding: 5px;}
+.copy .photo .credit { color: #c9243f; font-weight: bold; font-family: "NFLEndzoneSansLight", Helvetica, sans-serif; font-size: 21px; line-height: 50px; }
+.copy .photo .border { padding: 0; display: block; border: ; margin-top: 0px; margin-bottom: 0px; height: 1px;  width: auto; position: relative; }
+div.divider { width: auto; display: block; margin: 0 auto 4px auto; height: 2px; padding: 0px; border: ; border-right: ; border-left: ; }
+.copy .photo2 {  padding: 10px 0; border-top: ; border-bottom: ; margin-top: 10px; margin-bottom: 10px; width: ; position: relative;}
+.copy .photo2 img { width: 100%; }
+.copy .photo2 img:hover { cursor: }
+.copy .photo2 .caption {  background: #311c00;  display: none; line-height: 22px; font-size: 14px; font-style: ; font-family: "NFLEndzoneSansLight"; color: #ffffff; padding: 10px;}
+.copy .photo2 .credit { color: #c9243f; font-weight: bold; font-family: "NFLEndzoneSansLight", Helvetica, sans-serif; font-size: 21px; line-height: 50px; }
+.copy .photo2 .border { padding: 0; display: block; border-top: border: 7px solid #927c4d; 0px; margin-top: px; margin-bottom: px; height: 1px;  width: auto; position: relative; }
+.copy .photo3 {  padding: 10px 0; border-top: ; border-bottom: ; margin-top: 10px; margin-bottom: 40px; width: ; position: relative;}
+.copy .photo3 img { width: 100%; }
+.copy .photo3 img:hover { cursor: }
+.copy .photo3 .caption {  background: #353d73;  display: none; line-height: 22px; font-size: 15px; font-style: ; font-family: "NFLEndzoneSansLight"; color: #ffffff; padding: 10px;}
+.copy .photo3 .credit { color: #c9243f; font-weight: bold; font-family: "NFLEndzoneSansBold", Helvetica, sans-serif; font-size: 21px; line-height: 50px; }
+.copy .photo3 .border { padding: 0; display: block; border: ; 0px; margin-top: px; margin-bottom: px; height: 1px;  width: auto; position: relative; }
+div.divider { width: auto; display: block; margin: 0 auto 4px auto; height: 1px; padding: 0px; border: ; border-right: ; border-left: ; }
+.bottom-divider { width: auto; display: block; margin: 0 auto 40px auto; height: 1px; padding: 0px; border: 7px solid #ffc20e; border-right: 0px; border-left: 0px; }
+div.divider .logo{ display: block; margin: 0 auto; position: relative; right: px; top: -47px; }
+div.divider .logo2{ display: block; margin: 0 auto; position: relative; left: 0; top: -45px; }
+@media ( max-width: 999px ){
+	.copy .photo.left,
+	.copy .photo.right { margin: 0 auto 40px auto; }
+	.copy .photo img {}
+	.copy .photo img.mobileHide { display: none; }
+	.copy2 { width: 90%; }
+	.copy2 .photo.left,
+	.copy2 .photo.right { margin: 0 auto 40px auto; }
+	.copy2 .photo img {}
+	.copy2 .photo img.mobileHide { display: none; }
+    .copy3 { width: 90%; }
+	.copy3 .photo.left,
+	.copy3 .photo.right { margin: 0 auto 40px auto; }
+	.copy3 .photo img {}
+	.copy3 .photo img.mobileHide { display: none; }
+}
+@media ( min-width: 1000px ){
+    .copy2 { width: 780px; }
+    .copy3 { width: 780px; }
+	.copy .photo.left { float: left; margin-right: -50px; left: -10%; }
+	.copy .photo.right { float: right; margin-left: -50px; right: -10%; }
+	.copy .photo { width: 400px; }
+    .copy .photo2.left { float: left; margin-right: -50px; left: -10%; }
+	.copy .photo2.right { float: right; margin-left: -50px; right: -10%; }
+	.copy .photo2 { width: 400px; }
+    .copy .photo3.left { float: left; margin-right: -50px; left: -10%; }
+	.copy .photo3.right { float: right; margin-left: -50px; right: -10%; }
+	.copy .photo3 { width: 330px; }
+ 
+}
+</style>
+      </section>
+    </div>
+  </div>
+  <!-- track the page view -->
+  <script>if (nfl.omniture && !nfl.omniture.async) { nfl.omniture.track();}</script>
+  <script>(function(w){if(w._satellite){_satellite.pageBottom();}}(window))</script>
+
+<!-- START Parse.ly Include: Standard -->
+<div id="parsely-root" style="display: none">
+  <span id="parsely-cfg" data-parsely-site="nfl.com"></span>
+</div>
+<script>
+    (function(s, p, d) {
+      var h=d.location.protocol, i=p+"-"+s,
+          e=d.getElementById(i), r=d.getElementById(p+"-root"),
+          u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
+          :"static."+p+".com";
+      if (e) return;
+      e = d.createElement(s); e.id = i; e.async = true;
+      e.src = h+"//"+u+"/p.js"; r.appendChild(e);
+    })("script", "parsely", document);
+</script>
+<!-- END Parse.ly Include: Standard -->
+
+  <!-- END DECORATOR mobile-headless -->
+</body>
+</html>

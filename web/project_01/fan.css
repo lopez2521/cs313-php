@@ -2,15 +2,19 @@
 	width: 1200px;
 	height: 100px;
 	margin: auto;
-	border-style: dashed;
+	margin-top: 20px;
+	border-style: solid;
+	border-width: 1px;
 	background-color: gray;
-	background-image: url("img/logo.jpg");
+	background-image: url("imgages/logo.jpg");
     background-repeat: repeat-x;
 }
 
 body {
 	background-color: #7784aa;
 	background: #7784aa;
+	width: 1200px;
+	margin: auto;
 }
 h1 {
 	text-align: center;
