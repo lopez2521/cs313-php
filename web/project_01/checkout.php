@@ -16,28 +16,28 @@ session_start();
       <?php
       require('products.php');
 
-$taxRate = 0.08;
+// $taxRate = 0.08;
 
-function calculateSubtotal($cart, $products) {
-  $subtotal = 0;
+// function calculateSubtotal($cart, $products) {
+//   $subtotal = 0;
 
-  foreach ($cart as $key => $quantity) {
-    $cost = $products[$key]['price'] * $quantity;
+//   foreach ($cart as $key => $quantity) {
+//     $cost = $products[$key]['price'] * $quantity;
 
-    if ($quantity > 0) {
-      echo 'Ordering: ' . $products[$key]['label'] . ': ' . $quantity . '- $' . $cost . '<br>';
-    }
+//     if ($quantity > 0) {
+//       echo 'Ordering: ' . $products[$key]['label'] . ': ' . $quantity . '- $' . $cost . '<br>';
+//     }
 
-    $subtotal += $cost;
-  }
+//     $subtotal += $cost;
+//   }
 
-  return $subtotal;
-};
+//   return $subtotal;
+// };
 
 
-$subtotal = calculateSubtotal($_SESSION['cart'], $products);
+// $subtotal = calculateSubtotal($_SESSION['cart'], $products);
 
-echo '<br>' . $subtotal;
+// echo '<br>' . $subtotal;
 ?>
      <input type="button" name="return" value="Continue Shopping" onclick="window.location.href='main.php'" /><br />
      <form method="POST" action="confirmation.php">

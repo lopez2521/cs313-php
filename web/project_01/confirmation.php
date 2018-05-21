@@ -44,11 +44,11 @@ $dbopts = parse_url($dbUrl);
 
 print "<p>$dbUrl</p>\n\n";
 
-$dbHost = $dbopts["host"];
+$dbHost = $dbopts["127.0.0.1"];
 $dbPort = $dbopts["port"];
-$dbUser = $dbopts["user"];
+$dbUser = $dbopts["postgres"];
 $dbPassword = $dbopts["Cristina2521"];
-$dbName = ltrim($dbopts["path"],'/');
+$dbName = ltrim($dbopts["store"],'/');
 
 print "<p>pgsql:host=$dbHost;port=$dbPort;dbname=$dbName</p>\n\n";
 
