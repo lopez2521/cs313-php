@@ -9,66 +9,36 @@
 	<h1>Confirmation Page</h1>
 
 	<?php 
-	try
-{
-  $user = 'postgres';
-  $password = 'password';
-  $db = new PDO('pgsql:host=localhost;dbname=myTestDB', $user, $password);
+// 	try
+// {
+//   $user = 'postgres';
+//   $password = 'password';
+//   $db = new PDO('pgsql:host=localhost;dbname=myTestDB', $user, $password);
 
-  // this line makes PDO give us an exception when there are problems,
-  // and can be very helpful in debugging! (But you would likely want
-  // to disable it for production environments.)
-  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (PDOException $ex)
-{
-  echo 'Error!: ' . $ex->getMessage();
-  die();
-}
-
-$statement = $db->query('SELECT username, password FROM client');
-$results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-$stmt = $db->prepare('SELECT * FROM table WHERE id=:id AND name=:name');
-$stmt->bindValue(':id', $id, PDO::PARAM_INT);
-$stmt->bindValue(':name', $name, PDO::PARAM_STR);
-$stmt->execute();
-$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-	?>
-	 
-   <?php
-   $dbUrl = getenv('postgres://bgphqracfarmll:b4c6c1adb264ee1a2d39907878ef4cd52d8cbc114c771afbab616657a89e492f@ec2-54-83-19-244.compute-1.amazonaws.com:5432/ddfb1nn1gejh4v');
-
-if (empty($dbUrl)) {
- // example localhost configuration URL with postgres username and a database called cs313db
- $dbUrl = "postgres://postgres:password@localhost:5432/cs313db";
-}
+//   // this line makes PDO give us an exception when there are problems,
+//   // and can be very helpful in debugging! (But you would likely want
+//   // to disable it for production environments.)
+//   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// }
+// catch (PDOException $ex)
+// {
+//   echo 'Error!: ' . $ex->getMessage();
+//   die();
+// }
+	$dbUrl = getenv('postgres://bgphqracfarmll:b4c6c1adb264ee1a2d39907878ef4cd52d8cbc114c771afbab616657a89e492f@ec2-54-83-19-244.compute-1.amazonaws.com:5432/ddfb1nn1gejh4v');
 
 $dbopts = parse_url($dbUrl);
 
-print "<p>$dbUrl</p>\n\n";
-
-$dbHost = $dbopts["127.0.0.1"];
+$dbHost = $dbopts["host"];
 $dbPort = $dbopts["port"];
-$dbUser = $dbopts["postgres"];
+$dbUser = $dbopts["user"];
 $dbPassword = $dbopts["Cristina2521"];
-$dbName = ltrim($dbopts["store"],'/');
+$dbName = ltrim($dbopts["path"],'/');
 
-print "<p>pgsql:host=$dbHost;port=$dbPort;dbname=$dbName</p>\n\n";
+$db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
-try {
- $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-}
-catch (PDOException $ex) {
- print "<p>error: $ex->getMessage() </p>\n\n";
- die();
-}
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-foreach ($db->query('SELECT now()') as $row)
-{
- print "<p>$row[0]</p>\n\n";
-}
 
 	?> 
 	<?php
