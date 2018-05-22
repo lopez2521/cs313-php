@@ -55,7 +55,25 @@ if (!isset($_SESSION['cart'])) {
 </head>
 <body>
 	<p id="header"></p>
-	<form method="post" action="checkout.php">
+
+	<input type="button" name="return" value="Continue Shopping" onclick="window.location.href='main.php'" /><br />
+     <form method="POST" action="confirmation.php">
+      <h3>Mailing Information</h3>
+      <fieldset>
+        <label for="firstname">First Name:</label>
+        <input type="text" name="firstname" placeholder="First Name" ><br />
+        <label for="firstname">Last Name:</label>
+        <input type="text" name="lastname" placeholder="Last Name" ><br />
+        <label for="address">Address:</label>
+        <input type="text" name="address" placeholder="Address" ><br />
+        <label for="state">State</label>
+        <input type="text" name="state" placeholder="City" ><br />
+        <label for="zip">Zip Code:</label>
+        <input type="text" name="zip" placeholder="Zip Code" ><br />
+      </fieldset>
+      <input type="button" id="reset" value="Reset Form" onclick="location.href='clear.php';"></input>
+     <input type="button" name="order" value="Order Now" onclick="submit();"><br />
+	<!-- <form method="post" action="confirmation.php">
 		<div><p>Choose Your Team!</p>
 		<select name="teams" id="teams" onchange="getPic();">
 			<option value="choose">Choose Team</option>
@@ -127,7 +145,7 @@ if (!isset($_SESSION['cart'])) {
 </p>
 <input type="submit" name="submit" value="Order Form"> <br />
 </div>
-	</form>
+	</form> -->
 	<div id="footer">
 		<p>&copy 2018, Fan Fanatic</p>
 	</div>
