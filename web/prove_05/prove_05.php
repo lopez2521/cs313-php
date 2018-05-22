@@ -1,64 +1,12 @@
-<?php
-
-session_start();
-
-// require('products.php');
-
-if (!isset($_SESSION['cart'])) {
-  $_SESSION['cart'] = array();
-}
-
-?>
-
 <?php require ('connect.php') ?>
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-                    "http://www.w3.org/TR/xhtmll/DTD/xhtmll-stict.dtd">
-<html xmlns="http://www.w3.ord/1999/xhtml" lang="en" xml:lang="en" >
-<head>
-	<title>Project 01: Fanatic Fan</title>
-	<link rel="stylesheet" type="text/css" href="fan.css" />
-	<script type="text/javascript" src="fan.js"></script>
-</head>
-<body>
-	<div id="header">
-		<img src="img/logo.png" />
-	</div>
-	<h1>"Fanatic Fan"</h1>
-	<div id="page">
-		<h2 class="first">We have choices to match the heart!</h2>
-<form action="add.php" method="post">
-  <?php
-    foreach ($products as $key => $value) {
-      echo $value['label'] . ' ' . $value['price'] . '<input name="' . $key . '" type="number" min="0"><br>';
-      echo '<img src="' . $value['img'] . '"><br /><br />';
-    }
-  ?>
-  <button>Add to Cart</button><br />
-  <input type="button" onclick="location.href='checkout.php';" value="Go to Checkout" />
-  <input type="button" id="reset" value="Reset Form" onclick="location.href='clear.php';"></input>
-</form>
-	</div>
-	<div id="footer">
-		&copy; 2018, Fanatic Fan <br />
-	</div>
-
-</body>
-</html>
- -->
-
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                     "http://www.w3.org/TR/xhtmll/DTD/xhtmll-stict.dtd">
 <html xmlns="http://www.w3.ord/1999/xhtml" lang="en" xml:lang="en" >
 <head>
-	<title>Project 01</title>
-	<link rel="stylesheet" type="text/css" href="fan.css" />
-	<script type="text/javascript" src="fans.js"></script>
+	<title>Ponder 05</title>
 </head>
 <body>
-	<p id="header"></p>
-
-
 	<form method="post" action="checkout.php">
 		<div><p>Choose Your Team!</p>
 		<select name="teams" id="teams" onchange="getPic();">
@@ -99,12 +47,12 @@ if (!isset($_SESSION['cart'])) {
 	<div>
 	<img id="teampic"></div>
 
-		<div id="hat"><p>Team Hat: $19.99</p>
+		<div id="hat"><p>Team Hat: $14.99</p>
 				<input type="radio" name="hat" value="yes">YES
 				<input type="radio" name="hat" value="no">NO
 		</div>
 		<div>
-			<p>Shirt Price/Size: $9.99</p>
+			<p>Shirt Price/Size: $14.99</p>
 			<select id="size" name="size">
 				<option value="smshirt">Small</option>
 				<option value="mdshirt">Medium</option>
@@ -113,7 +61,7 @@ if (!isset($_SESSION['cart'])) {
 			</select>
 		</div>
 		<div>
-			<p>Sweatshirt Price/Size: $39.99</p>
+			<p>Sweatshirt Price/Size: $49.99</p>
 			<select id="sweatshirt" name="sweatshirt">
 				<option value="smsweatshirt">Small</option>
 				<option value="mdsweatshirt">Medium</option>
@@ -121,20 +69,21 @@ if (!isset($_SESSION['cart'])) {
 				<option value="xlsweatshirt">Extra Large</option>
 			</select>
 		</div><br />
+		<?php
+		 foreach ($db->query('SELECT Hat, Shirt FROM item') as $row)
+{
+  echo 'Hat: ' . $row['Hat'];
+  echo ' Shirt: ' . $row['Shirt'];
+  echo '<br/>';
+}
+		?>
 
-<div id="gender">
-		Gender:
-<input type="radio" name="gender" id="gender" value="female" />Female
-<input type="radio" name="gender" id="gender" value="male" />Male<br />
-<p>Comments:<br />
-<textarea id="comments" name="other"></textarea><br />
-</p>
+
+
 <input type="submit" name="submit" value="Order Form"> <br />
 </div>
 	</form>
-	<div id="footer">
-		<p>&copy 2018, Fan Fanatic</p>
-	</div>
+
 
 </body>
 </html>
