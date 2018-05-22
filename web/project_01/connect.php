@@ -23,7 +23,7 @@ $dbUrl = getenv('postgres://bgphqracfarmll:b4c6c1adb264ee1a2d39907878ef4cd52d8cb
 
 if (empty($dbUrl)) {
  // example localhost configuration URL with postgres username and a database called cs313db
- $dbUrl = "postgres://postgres:password@localhost:5432/cs313db";
+ $dbUrl = "postgres://postgres:password@localhost:5432/store";
 }
 
 $dbopts = parse_url($dbUrl);
@@ -34,7 +34,7 @@ $dbHost = $dbopts["host"];
 $dbPort = $dbopts["port"];
 $dbUser = $dbopts["user"];
 $dbPassword = $dbopts["Cristina2521"];
-$dbName = ltrim($dbopts["path"],'/');
+$dbName = ltrim($dbopts["store"],'/');
 
 print "<p>pgsql:host=$dbHost;port=$dbPort;dbname=$dbName</p>\n\n";
 

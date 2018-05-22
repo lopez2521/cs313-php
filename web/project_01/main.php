@@ -95,13 +95,13 @@ if (!isset($_SESSION['cart'])) {
 	<div>
 	<img id="teampic"></div>
 
-		<div><p>Team Hat: $19.99</p>
+		<div id="hat"><p>Team Hat: $19.99</p>
 				<input type="radio" name="hat" value="yes">YES
 				<input type="radio" name="hat" value="no">NO
 		</div>
 		<div>
 			<p>Shirt Price/Size: $9.99</p>
-			<select>
+			<select id="size" name="size">
 				<option value="smshirt">Small</option>
 				<option value="mdshirt">Medium</option>
 				<option value="lgshirt">Large</option>
@@ -110,7 +110,7 @@ if (!isset($_SESSION['cart'])) {
 		</div>
 		<div>
 			<p>Sweatshirt Price/Size: $39.99</p>
-			<select>
+			<select id="sweatshirt" name="sweatshirt">
 				<option value="smsweatshirt">Small</option>
 				<option value="mdsweatshirt">Medium</option>
 				<option value="lgsweatshirt">Large</option>
@@ -118,12 +118,12 @@ if (!isset($_SESSION['cart'])) {
 			</select>
 		</div><br />
 
-<div>
+<div id="gender">
 		Gender:
 <input type="radio" name="gender" id="gender" value="female" />Female
 <input type="radio" name="gender" id="gender" value="male" />Male<br />
 <p>Comments:<br />
-<textarea id="other" name="other"></textarea><br />
+<textarea id="comments" name="other"></textarea><br />
 </p>
 <input type="submit" name="submit" value="Order Form"> <br />
 </div>

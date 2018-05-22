@@ -8,7 +8,7 @@
 <body>
 	<h1>Confirmation Page</h1>
 
-	<?php 
+<!-- 	<?php 
 	try
 {
   $user = 'postgres';
@@ -65,8 +65,7 @@ foreach ($db->query('SELECT now()') as $row)
  print "<p>$row[0]</p>\n\n";
 }
 
-	?>
-   ?>
+	?> -->
 	<?php
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
@@ -77,7 +76,7 @@ foreach ($db->query('SELECT now()') as $row)
 
 	<?php
 	$query = "INSERT INTO client (
-    VALUES '$firstname', 'lastname', 'address', 'state', 'zip' );"
+    VALUES '$firstname', '$lastname', '$address', '$state', '$zip' );"
 	?>
 	<div>
 		<?php echo "<br />Your order will ship to: <br />" . $firstname . " " . $lastname;?> <br />
