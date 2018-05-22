@@ -69,14 +69,7 @@
 				<option value="xlsweatshirt">Extra Large</option>
 			</select>
 		</div><br />
-		<?php
-		 foreach ($db->query('SELECT Hat, Shirt FROM item') as $row)
-{
-  echo 'Hat: ' . $row['Hat'];
-  echo ' Shirt: ' . $row['Shirt'];
-  echo '<br/>';
-}
-		?>
+
 
 
 
