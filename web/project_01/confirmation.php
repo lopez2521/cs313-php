@@ -1,4 +1,6 @@
 <?php session_start(); ?>
+<?php require "connect.php"; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +11,7 @@
 	<h1>Confirmation Page</h1>
 
 	<?php 
+	// This if for the local host which is no longer working for me.
 // 	try
 // {
 //   $user = 'postgres';
@@ -25,19 +28,21 @@
 //   echo 'Error!: ' . $ex->getMessage();
 //   die();
 // }
-	$dbUrl = getenv('postgres://bgphqracfarmll:b4c6c1adb264ee1a2d39907878ef4cd52d8cbc114c771afbab616657a89e492f@ec2-54-83-19-244.compute-1.amazonaws.com:5432/ddfb1nn1gejh4v');
 
-$dbopts = parse_url($dbUrl);
+	// This if for heroku, but I am attempting to put the connection in //different file called connection.php
+// 	$dbUrl = getenv('postgres://bgphqracfarmll:b4c6c1adb264ee1a2d39907878ef4cd52d8cbc114c771afbab616657a89e492f@ec2-54-83-19-244.compute-1.amazonaws.com:5432/ddfb1nn1gejh4v');
 
-$dbHost = $dbopts["host"];
-$dbPort = $dbopts["port"];
-$dbUser = $dbopts["user"];
-$dbPassword = $dbopts["Cristina2521"];
-$dbName = ltrim($dbopts["path"],'/');
+// $dbopts = parse_url($dbUrl);
 
-$db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+// $dbHost = $dbopts["host"];
+// $dbPort = $dbopts["port"];
+// $dbUser = $dbopts["user"];
+// $dbPassword = $dbopts["Cristina2521"];
+// $dbName = ltrim($dbopts["path"],'/');
 
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+
+// $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
 	?> 
@@ -49,15 +54,6 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$zip = $_POST['zip'];
 	?>
 
-	<?php
-	$query = "INSERT INTO client (
-    VALUES '$firstname', '$lastname', '$address', '$state', 'zip' );"
-	?>
-	<div>
-		<?php echo "<br />Your order will ship to: <br />" . $firstname . " " . $lastname;?> <br />
-		<?php echo $address;?><br />
-		<?php echo $city . ', ' . $zip?><br />
-	</div>
 	<div id="footer">
 		&copy; 2018, Fanatic Fan <br />
 	</div>

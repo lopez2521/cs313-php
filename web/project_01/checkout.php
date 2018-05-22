@@ -38,7 +38,7 @@ session_start();
 // $subtotal = calculateSubtotal($_SESSION['cart'], $products);
 
 // echo '<br>' . $subtotal;
-?>
+//?>
      <input type="button" name="return" value="Continue Shopping" onclick="window.location.href='main.php'" /><br />
      <form method="POST" action="confirmation.php">
       <h3>Mailing Information</h3>
