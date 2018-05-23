@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php 
-
+// This is the basic connection
 $dbUrl = getenv('DATABASE_URL');
 
 $dbopts = parse_url($dbUrl);
@@ -47,7 +47,7 @@ echo '<h1>Items</h1>';
 foreach($rows as $row) {
     echo '<p>';
     echo '<a href="details.php?id=' . $row['item_id'] . '">';
-    echo '<strong>' . $row['item'] . ' ' . $row['hat'] . ':' . $row['Shirt'] . ' - </strong></a>';
+    echo '<strong>' . $row['item'] . ' ' . $row['Hat'] . ':' . $row['Shirt'] . ' - </strong></a>';
     echo '</p>';
 }
 ?>
