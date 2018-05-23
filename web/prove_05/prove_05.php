@@ -7,6 +7,61 @@
 	<title>Ponder 05</title>
 </head>
 <body>
+    <?php 
+
+$dbUrl = getenv('DATABASE_URL');
+
+$dbopts = parse_url($dbUrl);
+
+$dbHost = $dbopts["host"];
+$dbPort = $dbopts["port"];
+$dbUser = $dbopts["user"];
+$dbPassword = $dbopts["pass"];
+$dbName = ltrim($dbopts["path"],'/');
+
+$db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$rows = null;
+
+if(!empty($_POST['item'])) {
+    $item = filter_input(INPUT_POST, 'item', FILTER_SANITIZE_STRING);
+    $youritem = '%' . $item . '%';
+
+    $stmt = $db->prepare('SELECT * FROM store WHERE item LIKE :item');
+    $stmt->bindValue('item', $youritem, PDO::PARAM_STR);
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+}
+
+else {
+    $stmt = $db->prepare('SELECT * FROM store');
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+echo '<h1>Items</h1>';
+
+foreach($rows as $row) {
+    echo '<p>';
+    echo '<a href="details.php?id=' . $row['item_id'] . '">';
+    echo '<strong>' . $row['item'] . ' ' . $row['hat'] . ':' . $row['Shirt'] . ' - </strong></a>';
+    echo '</p>';
+}
+?>
+<!-- STRETCH CHALLENGE 01 -->
+
+<br>
+<form action="prove_05.php" method="post">
+    <strong><label for="item">Item:</label></strong>
+    <input type="text" name="item" id="item">
+    <input type="submit" value="Search">
+</form>
+     ?>
+<!-- 
+
 	<form method="post" action="checkout.php">
 		<div><p>Choose Your Team!</p>
 		<select name="teams" id="teams" onchange="getPic();">
@@ -75,7 +130,7 @@
 
 <input type="submit" name="submit" value="Order Form"> <br />
 </div>
-	</form>
+	</form> -->
 
 
 </body>
