@@ -58,7 +58,6 @@ foreach($rows as $row) {
     <input type="text" name="item" id="item">
     <input type="submit" value="Search">
 </form>
-     ?>
  </body>
  </html>
 <!-- 
