@@ -5,8 +5,7 @@
 	<title>Ponder 05</title>
 </head>
 <body>
-
-
+<h1>Search for some items and get pricing!</h1>
     <?php 
 // This is the basic connection
 $dbUrl = getenv('DATABASE_URL');
