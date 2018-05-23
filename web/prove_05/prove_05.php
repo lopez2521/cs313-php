@@ -60,6 +60,8 @@ foreach($rows as $row) {
     <input type="submit" value="Search">
 </form>
      ?>
+ </body>
+ </html>
 <!-- 
 
 	<form method="post" action="checkout.php">
