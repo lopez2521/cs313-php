@@ -6,7 +6,6 @@
 </head>
 <body>
 <h1>Search for some items and get pricing!</h1>
-<?php echo "Hello"; ?>
     <?php 
 // This is the basic connection
 $dbUrl = getenv('DATABASE_URL');
@@ -25,22 +24,22 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $rows = null;
 
-if(!empty($_POST['item'])) {
-    $item = filter_input(INPUT_POST, 'item', FILTER_SANITIZE_STRING);
-    $youritem = '%' . $item . '%';
+// if(!empty($_POST['item'])) {
+//     $item = filter_input(INPUT_POST, 'item', FILTER_SANITIZE_STRING);
+//     $youritem = '%' . $item . '%';
 
-    $stmt = $db->prepare('SELECT * FROM store WHERE item LIKE :item');
-    $stmt->bindValue('item', $youritem, PDO::PARAM_STR);
-    $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//     $stmt = $db->prepare('SELECT * FROM store WHERE item LIKE :item');
+//     $stmt->bindValue('item', $youritem, PDO::PARAM_STR);
+//     $stmt->execute();
+//     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-}
+// }
 
-else {
-    $stmt = $db->prepare('SELECT * FROM store');
-    $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+// else {
+//     $stmt = $db->prepare('SELECT * FROM store');
+//     $stmt->execute();
+//     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// }
 
 echo '<h1>Items</h1>';
 
