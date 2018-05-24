@@ -55,7 +55,7 @@ else {
 foreach($rows as $row) {
     echo '<p>';
     // echo '<a href="details.php?id=' . $row['item_id'] . '">';
-    echo '<strong>' . $row['id'] . ' ' . $row['team'] . ':' . $row['team_id'] . ' - </strong></a>';
+    echo '<strong>' . $row['id'] . ' ' . $row['name'] . ':' . $row['team'] . ' - </strong></a>';
     echo '</p>';
 }
 ?>
