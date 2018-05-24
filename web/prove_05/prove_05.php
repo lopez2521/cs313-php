@@ -31,7 +31,7 @@ if(!empty($_POST['product'])) {
     $product = filter_input(INPUT_POST, 'product', FILTER_SANITIZE_STRING);
     $youritem = '%' . $product . '%';
 
-    $stmt = $db->prepare('SELECT * FROM store WHERE product LIKE :product');
+    $stmt = $db->prepare('SELECT * FROM product WHERE price LIKE :price');
     $stmt->bindValue('product', $youritem, PDO::PARAM_STR);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -39,7 +39,7 @@ if(!empty($_POST['product'])) {
 }
 
 else {
-    $stmt = $db->prepare('SELECT * FROM store');
+    $stmt = $db->prepare('SELECT * FROM product');
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
