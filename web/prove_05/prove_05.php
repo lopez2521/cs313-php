@@ -52,12 +52,12 @@ else {
 //     echo '</pre>';
 // }
 
-// foreach($rows as $row) {
-//     echo '<p>';
-//     // echo '<a href="details.php?id=' . $row['item_id'] . '">';
-//     echo '<strong>' . $row['price'] . ' ' . $row['size_id'] . ':' . $row['team_id'] . ' - </strong></a>';
-//     echo '</p>';
-// }
+foreach($rows as $row) {
+    echo '<p>';
+    // echo '<a href="details.php?id=' . $row['item_id'] . '">';
+    echo '<strong>' . $row['id'] . ' ' . $row['team'] . ':' . $row['team_id'] . ' - </strong></a>';
+    echo '</p>';
+}
 ?>
 <!-- STRETCH CHALLENGE 01 -->
 
