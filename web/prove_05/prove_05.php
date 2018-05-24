@@ -24,6 +24,9 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $rows = null;
 
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 if(!empty($_POST['product'])) {
     $product = filter_input(INPUT_POST, 'product', FILTER_SANITIZE_STRING);
     $youritem = '%' . $product . '%';
