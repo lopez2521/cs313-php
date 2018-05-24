@@ -44,13 +44,13 @@ else {
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-echo '<h1>Items</h1>';
+// echo '<h1>Items</h1>';
 
-foreach($rows as $row) {
-    echo '<pre>';
-    var_dump($row);
-    echo '</pre>';
-}
+// foreach($rows as $row) {
+//     echo '<pre>';
+//     var_dump($row);
+//     echo '</pre>';
+// }
 
 // foreach($rows as $row) {
 //     echo '<p>';
@@ -61,17 +61,31 @@ foreach($rows as $row) {
 ?>
 <!-- STRETCH CHALLENGE 01 -->
 
-<br>
+
+<form action="" method="post">
+
+<select name="teams" id="teams">
+<?php
+$stmt = $db->query('SELECT id, name FROM team');
+$stmt->execute();
+while ($row = $stmt->fetch()) {
+  echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+}
+?>
+</select>
+
+</form>
+<!-- <br>
 <form action="prove_05.php" method="post">
     <strong><label for="item">Item:</label></strong>
     <input type="text" name="item" id="item">
     <input type="submit" value="Search">
 </form>
  </body>
- </html>
-<!-- 
+ </html> -->
 
-	<form method="post" action="checkout.php">
+
+	<!-- <form method="post" action="checkout.php">
 		<div><p>Choose Your Team!</p>
 		<select name="teams" id="teams" onchange="getPic();">
 			<option value="choose">Choose Team</option>
@@ -139,8 +153,8 @@ foreach($rows as $row) {
 
 <input type="submit" name="submit" value="Order Form"> <br />
 </div>
-	</form> -->
-
+	</form>
+ -->
 
 </body>
 </html>
