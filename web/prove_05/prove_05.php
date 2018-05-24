@@ -83,6 +83,16 @@ while ($row = $stmt->fetch()) {
 }
 ?>
 </select>
+
+<select name="sizes" id="sizes">
+<?php
+$stmt = $db->query('SELECT id, name, code FROM size');
+$stmt->execute();
+while ($row = $stmt->fetch()) {
+  echo '<option value="' . $row['id'] . '">' . $row['name'] . $row['code'] . '</option>';
+}
+?>
+</select>
 <input type="submit" name="Find">
 </form>
 <!-- <br>
