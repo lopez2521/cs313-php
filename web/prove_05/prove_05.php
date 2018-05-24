@@ -73,7 +73,7 @@ while ($row = $stmt->fetch()) {
 }
 ?>
 </select>
-
+<input type="submit" name="Find">
 </form>
 <!-- <br>
 <form action="prove_05.php" method="post">
