@@ -46,18 +46,18 @@ else {
 
 echo '<h1>Items</h1>';
 
-// foreach($rows as $row) {
-//     echo '<pre>';
-//     var_dump($row);
-//     echo '</pre>';
-// }
-
 foreach($rows as $row) {
-    echo '<p>';
-    // echo '<a href="details.php?id=' . $row['item_id'] . '">';
-    echo '<strong>' . $row['price'] . ' ' . $row['size_id'] . ':' . $row['team_id'] . ' - </strong></a>';
-    echo '</p>';
+    echo '<pre>';
+    var_dump($row);
+    echo '</pre>';
 }
+
+// foreach($rows as $row) {
+//     echo '<p>';
+//     // echo '<a href="details.php?id=' . $row['item_id'] . '">';
+//     echo '<strong>' . $row['price'] . ' ' . $row['size_id'] . ':' . $row['team_id'] . ' - </strong></a>';
+//     echo '</p>';
+// }
 ?>
 <!-- STRETCH CHALLENGE 01 -->
 
