@@ -24,12 +24,12 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $rows = null;
 
-if(!empty($_POST['item'])) {
-    $item = filter_input(INPUT_POST, 'item', FILTER_SANITIZE_STRING);
-    $youritem = '%' . $item . '%';
+if(!empty($_POST['product'])) {
+    $product = filter_input(INPUT_POST, 'product', FILTER_SANITIZE_STRING);
+    $youritem = '%' . $product . '%';
 
-    $stmt = $db->prepare('SELECT * FROM store WHERE item LIKE :item');
-    $stmt->bindValue('item', $youritem, PDO::PARAM_STR);
+    $stmt = $db->prepare('SELECT * FROM store WHERE product LIKE :product');
+    $stmt->bindValue('product', $youritem, PDO::PARAM_STR);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
@@ -43,29 +43,29 @@ else {
 
 echo '<h1>Items</h1>';
 
-foreach($rows as $row) {
-    echo '<pre>';
-    var_dump($row);
-    echo '</pre>';
-}
-
 // foreach($rows as $row) {
-//     echo '<p>';
-//     echo '<a href="details.php?id=' . $row['item_id'] . '">';
-//     echo '<strong>' . $row['item'] . ' ' . $row['Hat'] . ':' . $row['Shirt'] . ' - </strong></a>';
-//     echo '</p>';
+//     echo '<pre>';
+//     var_dump($row);
+//     echo '</pre>';
 // }
+
+foreach($rows as $row) {
+    echo '<p>';
+    // echo '<a href="details.php?id=' . $row['item_id'] . '">';
+    echo '<strong>' . $row['price'] . ' ' . $row['size_id'] . ':' . $row['team_id'] . ' - </strong></a>';
+    echo '</p>';
+}
 ?>
 <!-- STRETCH CHALLENGE 01 -->
 
-<!-- <br>
+<br>
 <form action="prove_05.php" method="post">
     <strong><label for="item">Item:</label></strong>
     <input type="text" name="item" id="item">
     <input type="submit" value="Search">
 </form>
  </body>
- </html> -->
+ </html>
 <!-- 
 
 	<form method="post" action="checkout.php">
