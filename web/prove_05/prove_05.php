@@ -58,14 +58,14 @@ foreach($rows as $row) {
 ?>
 <!-- STRETCH CHALLENGE 01 -->
 
-<br>
+<!-- <br>
 <form action="prove_05.php" method="post">
     <strong><label for="item">Item:</label></strong>
     <input type="text" name="item" id="item">
     <input type="submit" value="Search">
 </form>
  </body>
- </html>
+ </html> -->
 <!-- 
 
 	<form method="post" action="checkout.php">
