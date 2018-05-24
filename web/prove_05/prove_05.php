@@ -62,7 +62,7 @@ foreach($rows as $row) {
 <!-- STRETCH CHALLENGE 01 -->
 
 
-<form action="" method="post">
+<form action="prove_05.php" method="post">
 
 <select name="teams" id="teams">
 <?php
