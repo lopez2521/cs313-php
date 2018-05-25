@@ -7,7 +7,7 @@
 <body>
 <h1>Search for some items and get pricing!</h1>
 <?php
-requrie ('connect.php');
+requre('connect.php');
 ?>
 <!-- Here are some select statements to look for items. They are inside the form -->
 <form action="prove_05.php" method="post">
