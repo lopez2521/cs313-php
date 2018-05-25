@@ -13,44 +13,48 @@ requre('connect.php');
 ini_set("display_errors", 1);
 ?>
 <!-- Here are some select statements to look for items. They are inside the form -->
+// Require the file that contains your PDO database connection object in it.
+require('db.php');
+?>
+
 <form action="prove_05.php" method="post">
-    <label for="teams">Teams</label>
-    <select name="teams" id="teams">
-        <option value="" selected>Pick Your Team</option>
-        <?php
-        $stmt = db->query('SELECT id, name FROM team');
-        $stmt->execute();
-        while ($row = $stmt->fetch()) {
-            echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
-        }
-        ?>
-    </select>
+  <label for="teams">Teams</label>
+  <select name="teams" id="teams">
+  <option value="" selected>Any</option>
+  <?php
+  $stmt = $db->query('SELECT id, name FROM team');
+  $stmt->execute();
+  while ($row = $stmt->fetch()) {
+    echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+  }
+  ?>
+  </select>
 
-    <label for="items">Items</label>
-    <select name="items" id="items">
-        <option value="" selected>Pick an Item</option>
-        <?php
-        $stmt = db->query('SELECT id, name FROM item');
-        $stmt->execute();
-        while ($row = $stmt->fetch()) {
-            echo '<option=value"' . $row['id'] . '">' . $row['name'] . '</option>';
-        }
-        ?>
-    </select>
+  <label for="items">Items</label>
+  <select name="items" id="items">
+  <option value="" selected>Any</option>
+  <?php
+  $stmt = $db->query('SELECT id, name FROM item');
+  $stmt->execute();
+  while ($row = $stmt->fetch()) {
+    echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+  }
+  ?>
+  </select>
 
-    <label for="sizes">Sizes</label>
-    <select name="sizes" id="sizes">
-        <option value="" selected>Pick a Size</option>
-        <?php
-        $stmt = db->query('SELECT id, name FROM SIZE');
-        $stmt->execute();
-        while ($row = $stmt->fetch()) {
-             echo '<option=value"' . $row['id'] . '">' . $row['name'] . '</option>';
-         } 
-        ?>
-    </select>
-
-    <button>Search</button>
+  <label for="sizes">Sizes</label>
+  <select name="sizes" id="sizes">
+  <option value="" selected>Any</option>
+  <?php
+  $stmt = $db->query('SELECT id, name FROM size');
+  $stmt->execute();
+  while ($row = $stmt->fetch()) {
+    echo '<option value="' . $row['id'] . '">' . $row['name'] . '</option>';
+  }
+  ?>
+  </select>
+  
+  <button>Search</button>
 </form>
 
 <!-- associative arrays inside $input to describe a column form my products table -->
