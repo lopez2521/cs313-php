@@ -7,7 +7,7 @@
 <body>
 <h1>Search for some items and get pricing!</h1>
 <?php
-requre('connect.php');
+require('connect.php');
 ?>
 <?php error_reporting(E_ALL);
 ini_set("display_errors", 1);
