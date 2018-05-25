@@ -9,6 +9,9 @@
 <?php
 requre('connect.php');
 ?>
+<?php error_reporting(E_ALL);
+ini_set("display_errors", 1);
+?>
 <!-- Here are some select statements to look for items. They are inside the form -->
 <form action="prove_05.php" method="post">
     <label for="teams">Teams</label>
