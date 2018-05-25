@@ -13,9 +13,8 @@ requre('connect.php');
 ini_set("display_errors", 1);
 ?>
 <!-- Here are some select statements to look for items. They are inside the form -->
-// Require the file that contains your PDO database connection object in it.
-require('db.php');
-?>
+<!-- Require the file that contains your PDO database connection object in it.
+require('db.php') -->
 
 <form action="prove_05.php" method="post">
   <label for="teams">Teams</label>
