@@ -67,6 +67,36 @@ require('db.php') -->
   }
   ?>
   </select>
+
+  <?php 
+  // trying to get it to display
+  if(!empty($_POST['teams'])) {
+    $book = filter_input(INPUT_POST, 'teams', FILTER_SANITIZE_STRING);
+    $likeBook = '%' . $book . '%';
+
+    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE :book');
+    $stmt->bindValue(':book', $likeBook, PDO::PARAM_STR);
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+}
+
+else {
+    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures');
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+echo '<h1>Scripture Resources</h1>';
+
+foreach($rows as $row) {
+    echo '<p>';
+    echo '<a href="details.php?id=' . $row['scripture_id'] . '">';
+    echo '<strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . ' - </strong></a>';
+    echo '</p>';
+}
+
+  ?>
   
   <button>Search</button>
 </form>
@@ -91,9 +121,42 @@ $inputs = array(
   ),
 );
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+foreach($rows as $row) {
+    echo '<p>';
+    echo '<strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . ' - </strong>';
+    echo '"' . $row['content'] . '"';
+    echo '</p>';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Integer flag to determine if the user has done a search for 
 // at least one type of data. 
-
 $inputCount = 0;
 
 //Starting the query
