@@ -60,21 +60,21 @@ require('db.php');
 <!-- associative arrays inside $input to describe a column form my products table -->
 <?php
 $inputs = array(
-array(
-'column' => 'product.team_id', 
-'placeholder' => 'team',
- 'value' => filter_input(INPUT_POST, 'teams')
-),
-array(
-    'column' => 'product.item_id', 
+  array(
+    'column'      => 'product.team_id',
+    'placeholder' => 'team',
+    'value'       => filter_input(INPUT_POST, 'teams')
+  ),
+  array(
+    'column'      => 'product.item_id',
     'placeholder' => 'item',
-    'value' => filter_input(INPUT_POST, 'items')
-),
-array(
-    'column' => 'product.size_id', 
-     'placeholder' => 'size',
-     'value' => filter_input(INPUT_POST, 'sizes')
- ),
+    'value'       => filter_input(INPUT_POST, 'items')
+  ),
+  array(
+    'column'      => 'product.size_id',
+    'placeholder' => 'size',
+    'value'       => filter_input(INPUT_POST, 'sizes')
+  ),
 );
 
 // Integer flag to determine if the user has done a search for 
