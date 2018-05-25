@@ -9,7 +9,7 @@
 <?php
 requrie ('connect.php');
 ?>
-
+<!-- Here are some select statements to look for items. They are inside the form -->
 <form action="prove_05.php" method="post">
     <label for="teams">Teams</label>
     <select name="teams" id="teams">
@@ -49,6 +49,91 @@ requrie ('connect.php');
 
     <button>Search</button>
 </form>
+
+<!-- associative arrays inside $input to describe a column form my products table -->
+<?php
+$inputs = array(
+array(
+'column' => 'product.team_id', 
+'placeholder' => 'team',
+ 'value' => filter_input(INPUT_POST, 'teams')
+),
+array(
+    'column' => 'product.item_id', 
+    'placeholder' => 'item',
+    'value' => filter_input(INPUT_POST, 'items')
+),
+array(
+    'column' => 'product.size_id', 
+     'placeholder' => 'size',
+     'value' => filter_input(INPUT_POST, 'sizes')
+ ),
+);
+
+// Integer flag to determine if the user has done a search for 
+// at least one type of data. 
+
+$inputCount = 0;
+
+//Starting the query
+$query = "SELECT
+  size.name      AS size,
+  item.name      AS item,
+  team.name      AS team,
+  product.price  AS price
+FROM product
+INNER JOIN size
+ ON product.size_id = size.id
+INNER JOIN item
+ ON product.item_id = item.id
+INNER JOIN team 
+ ON product.team_id = team.id
+WHERE ";
+
+
+// We go over each individual element inside our array of inputs. If if
+// has a value, we concatenate a placeholder condition into our WHERE clause.
+// We also update the value of $inputCount to show that at least one of our
+// desired inputs does exist, so the rest of the query is safe to run.
+// If PHP can't find a value in $_POST, the blank input will be ignored.
+foreach ($inputs as $input) {
+  if (!empty($input['value'])) {
+    if ($inputCount) {
+      $query .= 'AND ';
+    }
+    
+    $query .= "{$input['column']} = :{$input['placeholder']} ";
+    $inputCount++;
+  }
+}
+
+// Check $inputCount to make sure at least one of the desired inputs exists.
+// If not, we need to supply a default clause to our query to select all rows.
+if ($inputCount === 0) {
+  $query .= 'TRUE';
+}
+
+// Prepare the parameterized query.
+$stmt = $db->prepare($query);
+
+// Bind values to the query.
+foreach ($inputs as $input) {
+  if (!empty($input['value'])) {
+    $stmt->bindValue($input['placeholder'], $input['value']);
+  }
+}
+
+// Execute the query.
+$stmt->execute();
+
+// Display the results.
+while ($row = $stmt->fetch()) {
+  echo '<pre>';
+  var_dump($row);
+  echo '</pre>';
+}
+?>
+
 
 </body>
 </html>
