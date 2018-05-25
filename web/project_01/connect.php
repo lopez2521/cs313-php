@@ -4,7 +4,7 @@
 	<title></title>
 </head>
 <body>
-	<?php
+	
 	    <?php 
 // This is the basic connection
 $dbUrl = getenv('DATABASE_URL');
