@@ -84,17 +84,17 @@ $inputCount = 0;
 
 //Starting the query
 $query = "SELECT
-  size.name      AS size,
-  item.name      AS item,
-  team.name      AS team,
-  product.price  AS price
+  size.name     AS size,
+  item.name     AS item,
+  team.name     AS team,
+  product.price AS price
 FROM product
 INNER JOIN size
- ON product.size_id = size.id
+  ON product.size_id = size.id
 INNER JOIN item
- ON product.item_id = item.id
-INNER JOIN team 
- ON product.team_id = team.id
+  ON product.item_id = item.id
+INNER JOIN team
+  ON product.team_id = team.id
 WHERE ";
 
 
