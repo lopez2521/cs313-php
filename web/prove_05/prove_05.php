@@ -68,7 +68,7 @@ require('db.php') -->
   ?>
   </select>
 
-  <?php 
+ <!--  <?php 
   // trying to get it to display
   if(!empty($_POST['teams'])) {
     $book = filter_input(INPUT_POST, 'teams', FILTER_SANITIZE_STRING);
@@ -96,7 +96,7 @@ foreach($rows as $row) {
     echo '</p>';
 }
 
-  ?>
+  ?> -->
   
   <button>Search</button>
 </form>
