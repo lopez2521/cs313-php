@@ -74,7 +74,7 @@ require('db.php') -->
     $book = filter_input(INPUT_POST, 'teams', FILTER_SANITIZE_STRING);
     $likeBook = '%' . $book . '%';
 
-    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE :book');
+    $stmt = $db->prepare('SELECT * FROM team, item, size, product  WHERE team.name, item.name, size.name, product.price LIKE :team.name, item.name, size.name, product.price');
     $stmt->bindValue(':book', $likeBook, PDO::PARAM_STR);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -82,7 +82,7 @@ require('db.php') -->
 }
 
 else {
-    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures');
+    $stmt = $db->prepare('SELECT * FROM team, item, size, product');
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -91,8 +91,8 @@ echo '<h1>Scripture Resources</h1>';
 
 foreach($rows as $row) {
     echo '<p>';
-    echo '<a href="details.php?id=' . $row['scripture_id'] . '">';
-    echo '<strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . ' - </strong></a>';
+    echo '<a href="details.php?id=' . $row['team_id'] . '">';
+    echo '<strong>' . $row['team.name'] . ' ' . $row['item.name'] . ':' . $row['size.name'] . $row['product.price'] . ' - </strong></a>';
     echo '</p>';
 }
 
@@ -120,37 +120,6 @@ $inputs = array(
     'value'       => filter_input(INPUT_POST, 'sizes')
   ),
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-foreach($rows as $row) {
-    echo '<p>';
-    echo '<strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . ' - </strong>';
-    echo '"' . $row['content'] . '"';
-    echo '</p>';
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
