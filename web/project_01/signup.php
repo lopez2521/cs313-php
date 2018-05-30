@@ -12,6 +12,7 @@
 		<input type="text" name="email" id="email">
 		<label for="password">Password</label>
 		<input type="password" name="password" id="password">
+		<input type="button" name="signedup" value="Sign up">
 	</form>
 </p>
 	
