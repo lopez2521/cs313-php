@@ -57,7 +57,11 @@ if (!isset($_SESSION['cart'])) {
 </head>
 <body>
 	<p id="header"></p>
+<p id="login">
+	Please sign in <a href="login.php">here</a>
+</p><br />
 
+<p>If you would like to search for a particular item, please go <a href="search.php">here.</a></p>
 
 	<form method="post" action="checkout.php">
 		<div><p>Choose Your Team!</p>

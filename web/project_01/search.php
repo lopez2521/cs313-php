@@ -32,7 +32,7 @@ ini_set("display_errors", 1);
 <!-- Require the file that contains your PDO database connection object in it.
 require('db.php') -->
 
-<form action="prove_05.php" method="post">
+<form action="search.php" method="post">
   <label for="teams">Teams</label>
   <select name="teams" id="teams">
   <option value="" selected>Any</option>
