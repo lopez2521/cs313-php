@@ -109,7 +109,7 @@ if (!isset($_SESSION['cart'])) {
 		</div>
 		<div>
 			<p>Shirt Price/Size: $18.99</p>
-			<select id="size" name="size">
+			<select id="shirt" name="shirt">
 				<option value="smshirt">Small</option>
 				<option value="mdshirt">Medium</option>
 				<option value="lgshirt">Large</option>

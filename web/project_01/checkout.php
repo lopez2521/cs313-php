@@ -40,26 +40,44 @@ session_start();
 
 // echo '<br>' . $subtotal;
 //?>
+<?php
+  $teams = $_POST['teams']
+  $hat = $_POST['hat'];
+  $shirt = $_POST['shirt'];
+  $sweatshirt = $_POST['sweatshirt'];
+  $gender = $_POST['gender'];
+  $commnets = $_POST['comments'];
+
+  require("connect.php");
+$db = get_db();
+
+try {
+  $query = 'INSERT INTO ordering(teams, hat, shirt, sweatshirt, gender, comments) VALUES (:teams, :hat, :shirt, :sweatshirt, :gender, :comments)';
+
+  $statement = $db->prepare($query);
+
+  $statement->bindValue(':teams', $teams);
+  $statement->bindValue(':hat', $hat);
+  $statement->bindValue(':shirt', $shirtt);
+  $statement->bindValue(':sweatshirt', $sweatshirt);
+  $statement->bindValue(':gender', $gender);
+  $statement->bindValue(':comments', $comments);
+  $statement->execute();
+}
+
+catch (Exception $ex)
+{
+  // Please be aware that you don't want to output the Exception message in
+  // a production environment
+  echo "Error with DB. Details: $ex";
+  die();
+}
+
+  
+  ?>
+
      <input type="button" name="return" value="Continue Shopping" onclick="window.location.href='main.php'" /><br />
-     <form method="POST" action="confirmation.php">
-      <h3>Mailing Information</h3>
-      <fieldset>
-        <label for="firstname">First Name:</label>
-        <input type="text" name="firstname" placeholder="First Name" ><br />
-        <label for="firstname">Last Name:</label>
-        <input type="text" name="lastname" placeholder="Last Name" ><br />
-        <label for="address">Address:</label>
-        <input type="text" name="address" placeholder="Address" ><br />
-        <label for="state">State</label>
-        <input type="text" name="state" placeholder="City" ><br />
-        <label for="zip">Zip Code:</label>
-        <input type="text" name="zip" placeholder="Zip Code" ><br />
-      </fieldset>
-      <input type="button" id="reset" value="Reset Form" onclick="location.href='clear.php';"></input>
-     <input type="button" name="order" value="Order Now" onclick="submit();"><br />
-
-
-     </form>
+     
 
       
     </div>
