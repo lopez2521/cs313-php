@@ -15,13 +15,7 @@
 		<input type="button" name="button" value="login">
 	</form>
 
-	<p>Please sign up if you don't haven't yet</p>
-	<form method="post" id="signup" action="signup.php">
-		<label for="email">Email</label>
-		<input type="text" name="email" id="email">
-		<label for="password">Password</label>
-		<input type="password" name="password" id="password">
-	</form>
-</p>
+	<p>If it's your first time here, please <a href="signup.php">sign up.</a></p>
+
 </body>
 </html>
