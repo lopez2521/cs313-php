@@ -108,7 +108,7 @@ if (!isset($_SESSION['cart'])) {
 				<input type="radio" name="hat" value="no">NO
 		</div>
 		<div>
-			<p>Shirt Price/Size: $14.99</p>
+			<p>Shirt Price/Size: $18.99</p>
 			<select id="size" name="size">
 				<option value="smshirt">Small</option>
 				<option value="mdshirt">Medium</option>

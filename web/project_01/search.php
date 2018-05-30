@@ -159,6 +159,7 @@ while ($row = $stmt->fetch()) {
 }
 ?>
 
+<p><a href="main.php">Continue Shopping </a></p>
 
 </body>
 </html>
