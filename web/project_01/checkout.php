@@ -1,8 +1,6 @@
 <?php 
 session_start();
  ?>
- <?php require ('connect.php') ?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                     "http://www.w3.org/TR/xhtmll/DTD/xhtmll-stict.dtd">
 <html xmlns="http://www.w3.ord/1999/xhtml" lang="en" xml:lang="en" >
@@ -15,8 +13,28 @@ session_start();
     <div class="checkout" >
       <h3 class="first">Here is your order</h3>
       <?php
-      require('products.php');
 
+
+// This is the basic connection
+$dbUrl = getenv('DATABASE_URL');
+
+$dbopts = parse_url($dbUrl);
+
+$dbHost = $dbopts["host"];
+$dbPort = $dbopts["port"];
+$dbUser = $dbopts["user"];
+$dbPassword = $dbopts["pass"];
+$dbName = ltrim($dbopts["path"],'/');
+
+$db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  ?>
+<?php error_reporting(E_ALL);
+ini_set("display_errors", 1);
+?>
+<?php
 // $taxRate = 0.08;
 
 // function calculateSubtotal($cart, $products) {
