@@ -12,32 +12,7 @@ session_start();
   <h1>Checkout Page</h1>  
     <div class="checkout" >
       <h3 class="first">Here is your order</h3>
-      <?php
-
-
-// $taxRate = 0.08;
-
-// function calculateSubtotal($cart, $products) {
-//   $subtotal = 0;
-
-//   foreach ($cart as $key => $quantity) {
-//     $cost = $products[$key]['price'] * $quantity;
-
-//     if ($quantity > 0) {
-//       echo 'Ordering: ' . $products[$key]['label'] . ': ' . $quantity . '- $' . $cost . '<br>';
-//     }
-
-//     $subtotal += $cost;
-//   }
-
-//   return $subtotal;
-// };
-
-
-// $subtotal = calculateSubtotal($_SESSION['cart'], $products);
-
-// echo '<br>' . $subtotal;
-//?>
+<!-- had something here for the cart  -->
 <?php
   $teams = $_POST['teams']
   $hat = $_POST['hat'];
