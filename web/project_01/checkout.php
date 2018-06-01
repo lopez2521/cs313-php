@@ -15,26 +15,6 @@ session_start();
       <?php
 
 
-// This is the basic connection
-$dbUrl = getenv('DATABASE_URL');
-
-$dbopts = parse_url($dbUrl);
-
-$dbHost = $dbopts["host"];
-$dbPort = $dbopts["port"];
-$dbUser = $dbopts["user"];
-$dbPassword = $dbopts["pass"];
-$dbName = ltrim($dbopts["path"],'/');
-
-$db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-  ?>
-<?php error_reporting(E_ALL);
-ini_set("display_errors", 1);
-?>
-<?php
 // $taxRate = 0.08;
 
 // function calculateSubtotal($cart, $products) {
@@ -66,8 +46,8 @@ ini_set("display_errors", 1);
   $gender = $_POST['gender'];
   $commnets = $_POST['comments'];
 
-  require("connect.php");
-$db = get_db();
+  require 'connect.php';
+  $db = get_db();
 
 try {
   $query = 'INSERT INTO ordering(teams, hat, shirt, sweatshirt, gender, comments) VALUES (:teams, :hat, :shirt, :sweatshirt, :gender, :comments)';
