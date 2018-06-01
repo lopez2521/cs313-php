@@ -12,11 +12,7 @@ function get_db() {
 	try {
 		// default Heroku Postgres configuration URL
 		$dbUrl = getenv('DATABASE_URL');
-		if (!isset($dbUrl) || empty($dbUrl)) {
-			
-			$dbUrl = "postgres://ta_user:ta_pass@localhost:5432/scripture_ta";
-			
-		}
+		
 		// Get the various parts of the DB Connection from the URL
 		$dbopts = parse_url($dbUrl);
 		$dbHost = $dbopts["host"];
