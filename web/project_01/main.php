@@ -11,40 +11,7 @@ if (!isset($_SESSION['cart'])) {
 ?>
 
 <?php require ('connect.php') ?>
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-                    "http://www.w3.org/TR/xhtmll/DTD/xhtmll-stict.dtd">
-<html xmlns="http://www.w3.ord/1999/xhtml" lang="en" xml:lang="en" >
-<head>
-	<title>Project 01: Fanatic Fan</title>
-	<link rel="stylesheet" type="text/css" href="fan.css" />
-	<script type="text/javascript" src="fan.js"></script>
-</head>
-<body>
-	<div id="header">
-		<img src="img/logo.png" />
-	</div>
-	<h1>"Fanatic Fan"</h1>
-	<div id="page">
-		<h2 class="first">We have choices to match the heart!</h2>
-<form action="add.php" method="post">
-  <?php
-    foreach ($products as $key => $value) {
-      echo $value['label'] . ' ' . $value['price'] . '<input name="' . $key . '" type="number" min="0"><br>';
-      echo '<img src="' . $value['img'] . '"><br /><br />';
-    }
-  ?>
-  <button>Add to Cart</button><br />
-  <input type="button" onclick="location.href='checkout.php';" value="Go to Checkout" />
-  <input type="button" id="reset" value="Reset Form" onclick="location.href='clear.php';"></input>
-</form>
-	</div>
-	<div id="footer">
-		&copy; 2018, Fanatic Fan <br />
-	</div>
 
-</body>
-</html>
- -->
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -139,7 +106,7 @@ if (!isset($_SESSION['cart'])) {
 			<option value="Washington">Washington Redskins</option>
 		</select>			
 		</div>
-		
+
 		<div>
 			<p>Shirt Price/Size: $18.99</p>
 			<select id="shirt" name="shirt">
