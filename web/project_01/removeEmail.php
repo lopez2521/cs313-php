@@ -23,7 +23,8 @@ $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass
 
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$stmt = $db->prepare('DELETE FROM email_list WHERE email = $removeEmail');
+$stmt = $db->prepare('DELETE FROM email_list WHERE email = :removeEmail');
+$statement->bindValue(':removeEmail', $removeEmail);
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
