@@ -30,11 +30,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo '<h1>Email list</h1>';
 
-foreach($rows as $row) {
-    echo '<p>';
-    echo '<strong>' . $row['email'] . '</strong>';
-    echo '</p>';
-}
+
 	?>
 
 </body>
