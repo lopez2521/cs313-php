@@ -8,34 +8,35 @@
 
 </body>
 </html>
+
 <?php
 
 
+$dbUrl = getenv('DATABASE_URL');
 
-  require('connect.php');
-  $db = get_db();
+$dbopts = parse_url($dbUrl);
 
-  $email = $_POST['email'];
+$dbHost = $dbopts["host"];
+$dbPort = $dbopts["port"];
+$dbUser = $dbopts["user"];
+$dbPassword = $dbopts["pass"];
+$dbName = ltrim($dbopts["path"],'/');
 
-  try
-{
-	
-	$query = 'SELECT * FROM email_list';
-	$statement = $db->prepare($query);
-	
-	// $statement->bindValue(':email', $email);
-	$statement->execute();
-	
+$db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$stmt = $db->prepare('SELECT * FROM email_list');
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+echo '<h1>Email list</h1>';
+
+foreach($rows as $row) {
+    echo '<p>';
+    echo '<strong>' . $row['email'] . '</strong>';
+    echo '</p>';
 }
-catch (Exception $ex)
-{
-	// Please be aware that you don't want to output the Exception message in
-	// a production environment
-	echo "Error with DB. Details: $ex";
-	die();
-}
-
-echo "<h1>The list of emails.</h1>";
 
 	
 ?>
