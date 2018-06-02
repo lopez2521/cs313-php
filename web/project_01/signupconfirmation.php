@@ -33,7 +33,7 @@ catch (Exception $ex)
 	die();
 }
 
-echo "You are all signed up!";
+echo "<h1>You are all signed up!</h1>";
 
 	
 ?>
