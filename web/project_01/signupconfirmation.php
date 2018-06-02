@@ -18,12 +18,10 @@ if (empty($_POST["email"])) {
 
   try
 {
-	// Add the Scripture
-	// We do this by preparing the query with placeholder values
-	$query = "INSERT INTO email_list (email) VALUES('$email')";
+	
+	$query = 'INSERT INTO email_list (email) VALUES(:email)';
 	$statement = $db->prepare($query);
-	// Now we bind the values to the placeholders. This does some nice things
-	// including sanitizing the input with regard to sql commands.
+	
 	$statement->bindValue(':email', $email);
 	$statement->execute();
 	
