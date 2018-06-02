@@ -1,4 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign Up Confirmation</title>
+	<link rel="stylesheet" type="text/css" href="fan.css">
+</head>
+<body>
+
 <?php
+
+
 
   require('connect.php');
   $db = get_db();
@@ -27,3 +37,6 @@ echo "You are all signed up!";
 
 	
 ?>
+
+</body>
+</html>
