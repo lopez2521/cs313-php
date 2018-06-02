@@ -29,16 +29,14 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $stmt = $db->prepare('DELETE FROM email_list WHERE email = :removeEmail');
 $statement->bindValue(':removeEmail', $removeEmail);
 $stmt->execute();
-// $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);  // delete doesn't return anything
-// if you need a list to population, you'll need a select
 
 echo '<h1>Email list</h1>';
 
-// you aren't displaying a list here
+
 }
-catch (PDOException $ex) // or something like this
+catch (PDOException $ex)
 {
-	echo "There is a problem."
+	echo "There is a problem.";
 }
 
 echo "Your email has been removed. Sorry to see you go.";
