@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sign Up Confirmation</title>
+	<title>Email</title>
 	<link rel="stylesheet" type="text/css" href="fan.css">
 </head>
 <body>
 
+</body>
+</html>
 <?php
 
 
@@ -18,7 +20,7 @@
   try
 {
 	
-	$query = 'INSERT INTO email_list (email) VALUES(:email)';
+	$query = 'SELECT * FROM email_list';
 	$statement = $db->prepare($query);
 	
 	$statement->bindValue(':email', $email);
@@ -33,14 +35,7 @@ catch (Exception $ex)
 	die();
 }
 
-echo "<h1>You are all signed up!</h1>";
+echo "<h1>The list of emails.</h1>";
 
 	
 ?>
-
-<p><a href="email.php">Check for your email.</a>It is all of the emails in the database, but I wanted to show that its there.</p>
-
-
-
-</body>
-</html>
