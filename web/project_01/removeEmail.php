@@ -11,6 +11,7 @@ try
 {
 
 	$removeEmail = $_POST['removeEmail'];
+	echo $removeEmail;
 
 	$dbUrl = getenv('DATABASE_URL');
 
