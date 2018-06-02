@@ -39,6 +39,7 @@ foreach($rows as $row) {
 ?>
 
 <p>If you would like to remove you email, then we understand.<a href="removeemailform.php">Go here.</a></p>
+<p><a href="main.php">Return to Homepage.</a></p>
 
 
 </body>
