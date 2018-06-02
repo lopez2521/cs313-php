@@ -38,12 +38,8 @@ foreach($rows as $row) {
 	
 ?>
 
-<p>If you would like to remove you email, then we understand.</p>
+<p>If you would like to remove you email, then we understand.<a href="removeemailform.php">Go here.</a></p>
 
-<form method="post" id="removeEmail" action="removeEmail.php">
-	<input type="text" name="removeEmail">
-	<input type="submit" name="removedEmail" value="Remove Email">
-</form>
 
 </body>
 </html>
