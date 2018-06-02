@@ -26,7 +26,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $stmt = $db->prepare('DELETE FROM email_list WHERE email = :removeEmail');
 $statement->bindValue(':removeEmail', $removeEmail);
 $stmt->execute();
-$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo '<h1>Email list</h1>';
 
