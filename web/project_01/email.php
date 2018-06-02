@@ -21,10 +21,10 @@
 {
 	
 	$query = 'SELECT * FROM email_list';
-	// $statement = $db->prepare($query);
+	$statement = $db->prepare($query);
 	
 	// $statement->bindValue(':email', $email);
-	// $statement->execute();
+	$statement->execute();
 	
 }
 catch (Exception $ex)
