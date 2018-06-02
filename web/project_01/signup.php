@@ -10,7 +10,7 @@
 	<form method="post" id="signup" action="signupconfirmation.php">
 		<label for="email">Email</label>
 		<input type="text" name="email" id="email">
-		<input type="button" name="signedup" value="Sign up">
+		<input type="submit" name="signedup" value="Sign up">
 	</form>
 </p>
 	
