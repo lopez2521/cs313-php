@@ -41,6 +41,8 @@ catch (PDOException $ex) // or something like this
 	echo "There is a problem."
 }
 
+echo "Your email has been removed. Sorry to see you go.";
+
 
 	?>
 
