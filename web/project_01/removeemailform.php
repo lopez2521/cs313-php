@@ -12,5 +12,7 @@
 	<input type="text" name="removeEmail">
 	<input type="submit" name="removedEmail" value="Remove Email">
 </form>
+
+<p>Go to the <a href="main.php">homepage.</a></p>
 </body>
 </html>
