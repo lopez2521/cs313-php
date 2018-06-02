@@ -44,6 +44,8 @@ echo "Your email has been removed. Sorry to see you go.";
 
 	?>
 
+	<p><a href="email.php">Go ahead and check for yourself!</a></p>
+
 </body>
 </html>
 
