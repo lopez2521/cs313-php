@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Email</title>
+	<title>Remove Email</title>
 	<link rel="stylesheet" type="text/css" href="fan.css">
 </head>
 <body>
+	<?php
 
-<?php
+	$removeEmail = $_POST['removeEmail'];
 
-
-$dbUrl = getenv('DATABASE_URL');
+	$dbUrl = getenv('DATABASE_URL');
 
 $dbopts = parse_url($dbUrl);
 
@@ -23,7 +23,7 @@ $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass
 
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$stmt = $db->prepare('SELECT * FROM email_list');
+$stmt = $db->prepare('DELETE FROM email_list WHERE email = $removeEmail');
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -34,16 +34,7 @@ foreach($rows as $row) {
     echo '<strong>' . $row['email'] . '</strong>';
     echo '</p>';
 }
-
-	
-?>
-
-<p>If you would like to remove you email, then we understand.</p>
-
-<form method="post" id="removeEmail" action="removeEmail.php">
-	<input type="text" name="removeEmail">
-	<input type="submit" name="removedEmail" value="Remove Email">
-</form>
+	?>
 
 </body>
 </html>
