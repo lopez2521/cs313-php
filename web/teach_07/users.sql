@@ -1,0 +1,7 @@
+CREATE SCHEMA users;
+
+CREATE TABLE users.users (
+	id SERIAL PRIMARY KEY NOT NULL,
+	username VARCHAR(40) UNIQUE NOT NULL,
+	password CHAR(255) NOT NULL
+);
