@@ -15,7 +15,7 @@ session_start();
 <!-- had something here for the cart  -->
 <?php
   $teams = $_POST['teams']
-  $hat = $_POST['hat'];
+  $myhat = $_POST['hat'];
   $shirt = $_POST['shirt'];
   $sweatshirt = $_POST['sweatshirt'];
   $gender = $_POST['gender'];
@@ -30,7 +30,7 @@ try {
   $statement = $db->prepare($query);
 
   $statement->bindValue(':teams', $teams);
-  $statement->bindValue(':hat', $hat);
+  $statement->bindValue(':hat', $myhat);
   $statement->bindValue(':shirt', $shirtt);
   $statement->bindValue(':sweatshirt', $sweatshirt);
   $statement->bindValue(':gender', $gender);
