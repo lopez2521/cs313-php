@@ -6,17 +6,17 @@
 </head>
 <body>
 	<?php
-	$email - $_POST['email'];
+	$username - $_POST['username'];
 	$password = $_POST['password'];
 
 
-   if (!empty($email)) {
+   if (!empty($username)) {
    	if (!empty($password)) {
    		require('connect.php');
    		$db = get_db();
    	}
-   	if ($email == $_POST['email'] && $password == $_POST['password']) {
-   		echo "Welcome Back" . $email;
+   	// if ($email == $_POST['username'] && $password == $_POST['password']) {
+   	// 	echo "Welcome Back" . $email;
    	}
    }
 	// if (empty($_POST["email"])) {
