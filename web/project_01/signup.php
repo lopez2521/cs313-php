@@ -7,7 +7,7 @@
 <body>
 
 	<p>Please sign up if you haven't yet</p>
-	<form method="post" id="signup" action="signupconfirmation.php">
+	<form method="post" id="signup" action="signedUp.php">
 		<label for="email">Username</label>
 		<input type="text" name="username" id="username">
 		<label for="password">Password</label>

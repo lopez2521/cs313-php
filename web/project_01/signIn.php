@@ -5,6 +5,7 @@ session_start();
 <html>
 <head>
 	<title>Sign In</title>
+	<link rel="stylesheet" type="text/css" href="fan.css">
 </head>
 <body>
 
