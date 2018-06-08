@@ -4,11 +4,11 @@ session_start();
 
 // require('products.php');
 
-session_start();
-if (!isset($_SESSION['username'])) {
-	header('Location: signIn.php');
-	die();
-}
+// session_start();
+// if (!isset($_SESSION['username'])) {
+// 	header('Location: signIn.php');
+// 	die();
+// }
 
 ?>
 
