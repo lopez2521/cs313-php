@@ -22,7 +22,7 @@ session_start();
 
    		if (password_verify($password, $fetch_user['password'])) {
    			$_SESSION['username'] = $username;
-   			header('Location: main.php');
+   			header('Location: welcome.php');
    		}
 
    		else {
