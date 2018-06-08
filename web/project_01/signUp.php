@@ -15,6 +15,9 @@
 	<input type="submit" name="signUp" value="Sign Up">
 
     </form>
+    <div>
+    	<p>Or go to the <a href="main.php">homepage here.</a></p>
+    </div>
     <div id="footer">
 		<p>&copy 2018, Fan Fanatic</p>
 	</div>
