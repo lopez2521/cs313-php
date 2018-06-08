@@ -22,11 +22,13 @@ session_start();
 	<script type="text/javascript" src="fans.js"></script>
 </head>
 <body>
-	<p id="header"></p>
+	<p id="header">
+		<h1>Welcome to Fan Fanatic</h1>
+	</p>
 <p id="login">
 	Please sign in <a href="login.php">here</a>
 </p><br />
-<p id="login">Please join our <a href ="signup.php">email list</a></p>
+
 
 <p>If you would like to search for a particular item, please go <a href="search.php">here.</a></p>
 

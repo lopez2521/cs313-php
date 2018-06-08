@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="fan.css">
 </head>
 <body>
+	<p id="header"><h1>Fan Fanatic</h1></p>
 
 <p id="login">
 	<form method="post" id="login" action="welcome.php">
@@ -16,6 +17,8 @@
 	</form>
 
 	<p>If it's your first time here, please <a href="signup.php">sign up.</a></p>
-
+<div id="footer">
+		<p>&copy 2018, Fan Fanatic</p>
+	</div>
 </body>
 </html>
