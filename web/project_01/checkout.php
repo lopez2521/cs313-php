@@ -14,7 +14,7 @@ session_start();
       <h3 class="first">Here is your order</h3>
 <!-- had something here for the cart  -->
 <?php
-  $teams = $_POST['teams']
+  $teams = $_POST['teams'];
   $hat = $_POST['hat'];
   $shirt = $_POST['shirt'];
   $sweatshirt = $_POST['sweatshirt'];
