@@ -7,7 +7,7 @@
 <body>
 
 <p id="login">
-	<form method="post" id="login" action="welcome_back.php">
+	<form method="post" id="login" action="welcome.php">
 		<label for="username">Username</label>
 		<input type="text" name="username" id="username">
 		<label for="password">Password</label>
