@@ -16,7 +16,7 @@
 		<input type="submit" name="button" value="login">
 	</form>
 
-	<p>If it's your first time here, please <a href="signup.php">sign up.</a></p>
+	<p>If it's your first time here, please <a href="signUp.php">sign up.</a></p>
 <div id="footer">
 		<p>&copy 2018, Fan Fanatic</p>
 	</div>
