@@ -26,7 +26,7 @@ session_start();
    		}
 
    		else {
-   			header('Location: signIn.php');
+   			header('Location: main.php');
    		}
 
    
