@@ -30,7 +30,7 @@
   try
 {
 	
-	$query = 'INSERT INTO create_account (username, password) VALUES(:username, :password)';
+	$query = 'INSERT INTO create_account (user_name, password) VALUES(:username, :password)';
 	$statement = $db->prepare($query);
 	
 	$statement->bindValue(':username', $username);
