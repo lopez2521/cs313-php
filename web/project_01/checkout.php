@@ -37,7 +37,7 @@ try {
   $statement->bindValue(':comments', $comments);
   $statement->execute();
 
-  echo "Your order has been placed.";
+  echo "Your order has been placed.<br />";
 }
 
 catch (Exception $ex)
@@ -52,6 +52,7 @@ catch (Exception $ex)
   ?>
 
      <input type="button" name="return" value="Continue Shopping" onclick="window.location.href='main.php'" /><br />
+     <p>If you would like to view your order, go <a href="orderStatus.php">HERE</a></p>
      
 
       
