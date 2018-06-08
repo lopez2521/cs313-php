@@ -4,8 +4,12 @@ session_start();
 
 // require('products.php');
 
-if (!isset($_SESSION['cart'])) {
-  $_SESSION['cart'] = array();
+if (!isset($_SESSION['username'])) {
+  $username = $_SESSION['session'];
+}
+else {
+	header('signin.php');
+	die();
 }
 
 ?>
