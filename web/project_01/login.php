@@ -17,6 +17,10 @@
 	</form>
 
 	<p>If it's your first time here, please <a href="signUp.php">sign up.</a></p>
+
+	<div>
+    	<p>Or go to the <a href="main.php">homepage here.</a></p>
+    </div>
 <div id="footer">
 		<p>&copy 2018, Fan Fanatic</p>
 	</div>
