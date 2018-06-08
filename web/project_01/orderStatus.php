@@ -35,7 +35,7 @@ echo '<h1>Order list</h1>';
 
 foreach($rows as $row) {
     echo '<p>';
-    echo '<strong>' . $row['order_id'] . '<br />' . $row['teams'] . '<br />' . $row['hat'] . '<br />' . $row['shirt'] . '<br />' . $row['sweatshirt'] . '<br />' . $row['gender'] . '<br />' . $row['comments'] . '<br />' . '</strong>';
+    echo '<strong>' . $row['order_id'] . ' Team: ' . $row['teams'] . '<br />' . 'Hat: ' . $row['hat'] . '<br />' . 'Shirt: ' . $row['shirt'] . '<br />' . 'Sweatshirt: ' . $row['sweatshirt'] . '<br />' . 'Gender: ' $row['gender'] . '<br />' . 'Comments: ' $row['comments'] . '<br />' . '</strong>';
     echo '</p>';
 }
 
