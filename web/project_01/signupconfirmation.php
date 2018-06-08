@@ -13,15 +13,28 @@
   require('connect.php');
   $db = get_db();
 
-  $email = $_POST['email'];
+  $username = $_POST['username'];
+   $password = $_POST['password'];
+
+   if (isset($username) || $username = "" || !isset($password) || $password = "") {
+   	header("Location: signup.php");
+   	die();
+   }
+
+   // Prevent injection
+   $username = htmlspecialchars($username);
+
+   // Lets hash the password
+   $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
   try
 {
 	
-	$query = 'INSERT INTO email_list (email) VALUES(:email)';
+	$query = 'INSERT INTO create_account (username, password) VALUES(:username, :password)';
 	$statement = $db->prepare($query);
 	
-	$statement->bindValue(':email', $email);
+	$statement->bindValue(':username', $username);
+	$statement->bindValue(':password', $passwordHash);
 	$statement->execute();
 	
 }
@@ -33,12 +46,13 @@ catch (Exception $ex)
 	die();
 }
 
-echo "<h1>You are all signed up!</h1>";
+header("Location: main.php");
+die();
 
 	
 ?>
 
-<p><a href="email.php">Check for your email.</a>It is all of the emails in the database, but I wanted to show that its there.</p>
+<!-- <p><a href="email.php">Check for your email.</a>It is all of the emails in the database, but I wanted to show that its there.</p> -->
 
 
 
