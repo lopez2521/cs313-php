@@ -25,7 +25,7 @@ session_start();
   $db = get_db();
 
 try {
-  $query = 'INSERT INTO ordering(teams, hat, shirt, sweatshirt, gender, comments) VALUES (:teams, :hat, :shirt, :sweatshirt, :gender, :comments)';
+  $query = 'INSERT INTO orders(teams, hat, shirt, sweatshirt, gender, comments) VALUES (:teams, :hat, :shirt, :sweatshirt, :gender, :comments)';
 
   $statement = $db->prepare($query);
 
@@ -36,6 +36,8 @@ try {
   $statement->bindValue(':gender', $gender);
   $statement->bindValue(':comments', $comments);
   $statement->execute();
+
+  echo "Your order has been placed.";
 }
 
 catch (Exception $ex)
