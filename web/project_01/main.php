@@ -73,44 +73,6 @@ session_start();
 	</div>
 	<div>
 	<img id="teampic"></div>
-
-		<div><p>Team Hat: $19.99</p>
-			<select id="hat" name="hat">
-				<option value="choose">Choose Team</option>
-			<option value="Arizona">Arizona Cardinals</option>
-			<option value="Altanta">Atlanta Falcons</option>
-			<option value="Baltimore">Baltimore Ravens</option>
-			<option value="Buffalo">Buffalo Bills</option>
-			<option value="Carolina">Carolina Panthers</option>
-			<option value="Chicago">Chicago Bears</option>
-			<option value="Cincinnati">Cincinnati Bengals</option>
-			<option value="Cleveland">Cleveland Browns</option>
-			<option value="Dallas">Dallas Cowboys</option>
-			<option value="Denver">Denver Broncos</option>
-			<option value="Detroit">Detroit Lions</option>
-			<option value="Green">Green Bay Packers</option>
-			<option value="Houston">Houston Texans</option>
-			<option value="Indianapolis">Indianapolis Colts</option>
-			<option value="Jacksonville">Jacksonville Jaguars</option>
-			<option value="LA Chargers">Los Angeles Chargers</option>
-			<option value="LA Rams">Los Angeles Rams</option>
-			<option value="Miami">Miami Dolphins</option>
-			<option value="Minnesota">Minnesota Vikings</option>
-			<option value="New England">New England Patriots</option>
-			<option value="New Orleans">New Orleans Saints</option>
-			<option value="Giants">New York Giants</option>
-			<option value="Jets">New York Jets</option>
-			<option value="Oakland">Oakland Raiders</option>
-			<option value="Philadelphia">Philadelphia</option>
-			<option value="Pittburgh">Pittburgh Steelers</option>
-			<option value="San Fran">San Francisco</option>
-			<option value="Seattle">Seattle Seahawks</option>
-			<option value="Tampa">Tampa Bay Buccaneers</option>
-			<option value="Tennessee">Tennessee Titans</option>
-			<option value="Washington">Washington Redskins</option>
-		</select>			
-		</div>
-
 		<div>
 			<p>Shirt Price/Size: $18.99</p>
 			<select id="shirt" name="shirt">
@@ -129,6 +91,44 @@ session_start();
 				<option value="xlsweatshirt">Extra Large</option>
 			</select>
 		</div><br />
+
+		<div><p>Choose a Team Hat: $19.99</p>
+			<select id="hat" name="hat">
+				<option value="choose">Choose Team</option>
+				<option value="Arizona">Arizona Cardinals</option>
+				<option value="Altanta">Atlanta Falcons</option>
+				<option value="Baltimore">Baltimore Ravens</option>
+				<option value="Buffalo">Buffalo Bills</option>
+				<option value="Carolina">Carolina Panthers</option>
+				<option value="Chicago">Chicago Bears</option>
+				<option value="Cincinnati">Cincinnati Bengals</option>
+				<option value="Cleveland">Cleveland Browns</option>
+				<option value="Dallas">Dallas Cowboys</option>
+				<option value="Denver">Denver Broncos</option>
+				<option value="Detroit">Detroit Lions</option>
+				<option value="Green">Green Bay Packers</option>
+				<option value="Houston">Houston Texans</option>
+				<option value="Indianapolis">Indianapolis Colts</option>
+				<option value="Jacksonville">Jacksonville Jaguars</option>
+				<option value="LA Chargers">Los Angeles Chargers</option>
+				<option value="LA Rams">Los Angeles Rams</option>
+				<option value="Miami">Miami Dolphins</option>
+				<option value="Minnesota">Minnesota Vikings</option>
+				<option value="New England">New England Patriots</option>
+				<option value="New Orleans">New Orleans Saints</option>
+				<option value="Giants">New York Giants</option>
+				<option value="Jets">New York Jets</option>
+				<option value="Oakland">Oakland Raiders</option>
+				<option value="Philadelphia">Philadelphia</option>
+				<option value="Pittburgh">Pittburgh Steelers</option>
+				<option value="San Fran">San Francisco</option>
+				<option value="Seattle">Seattle Seahawks</option>
+				<option value="Tampa">Tampa Bay Buccaneers</option>
+				<option value="Tennessee">Tennessee Titans</option>
+				<option value="Washington">Washington Redskins</option>
+			</select>			
+		</div>
+
 
 <div id="gender">
 		Gender:
