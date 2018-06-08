@@ -31,3 +31,16 @@ session_start();
 
    
 	?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign In</title>
+</head>
+<body>
+
+  <br />
+  <p>If you want to go back to the main page, go <a href="main.php">here.</a></p>
+
+</body>
+</html>
