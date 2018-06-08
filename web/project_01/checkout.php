@@ -25,7 +25,7 @@ session_start();
   $db = get_db();
 
 try {
-  $query = 'INSERT INTO orders(teams, hat, shirt, sweatchirt, gender, comments) VALUES (:teams, :hat, :shirt, :sweatshirt, :gender, :comments)';
+  $query = 'INSERT INTO orders(teams, hat, shirt, sweatshirt, gender, comments) VALUES (:teams, :hat, :shirt, :sweatshirt, :gender, :comments)';
 
   $statement = $db->prepare($query);
 
