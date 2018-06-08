@@ -4,18 +4,13 @@ session_start();
 
 // require('products.php');
 
+session_start();
 if (!isset($_SESSION['username'])) {
-  $username = $_SESSION['session'];
-}
-else {
-	header('signin.php');
+	header('Location: signIn.php');
 	die();
 }
 
 ?>
-
-<?php require ('connect.php') ?>
-
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -34,6 +29,8 @@ else {
 <p id="login">Please join our <a href ="signup.php">email list</a></p>
 
 <p>If you would like to search for a particular item, please go <a href="search.php">here.</a></p>
+
+<p>Welcome <?php echo htmlspecialchars($_SESSION['username']) ?></p>
 
 	<form method="post" action="checkout.php">
 		<div><p>Choose Your Team!</p>
