@@ -9,6 +9,8 @@ session_start();
   <link rel="stylesheet" type="text/css" href="fan.css" />
 </head>
 <body>
+  <p id="header"></p>
+  
   <h1>Checkout Page</h1>  
     <div class="checkout" >
       <h3 class="first">Here is your order</h3>

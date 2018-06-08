@@ -6,6 +6,8 @@
   <link rel="stylesheet" type="text/css" href="fan.css">
 </head>
 <body>
+  <p id="header"></p>
+
 <h1>Search for some items and get pricing!</h1>
 
         <?php 
@@ -160,6 +162,10 @@ while ($row = $stmt->fetch()) {
 ?>
 
 <p><a href="main.php">Continue Shopping </a></p>
+
+<div id="footer">
+    <p>&copy 2018, Fan Fanatic</p>
+  </div>
 
 </body>
 </html>
