@@ -9,6 +9,15 @@ function updateOrder() {
 	var shirt = (document.getElementById('shirt').value);
 	var hat = (document.getElementById('hat').value);
 	
+	if (sweatshirt != 'choose') {
+		value = SWEATSHIRT;
+	}
+	if (shirt != 'choose') {
+		value = SHIRT;
+	}
+	if (value != 'choose') {
+		value = HAT;
+	}
 
 
 	var priceSweatshirt = (sweatshirt * SWEATSHIRT);
