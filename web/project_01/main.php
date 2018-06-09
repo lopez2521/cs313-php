@@ -76,6 +76,7 @@ session_start();
 		<div>
 			<p>Shirt Price/Size: $18.99</p>
 			<select id="shirt" name="shirt">
+				<option value="choose">Choose Shirt Size</option>
 				<option value="smshirt">Small</option>
 				<option value="mdshirt">Medium</option>
 				<option value="lgshirt">Large</option>
@@ -85,6 +86,7 @@ session_start();
 		<div>
 			<p>Sweatshirt Price/Size: $49.99</p>
 			<select id="sweatshirt" name="sweatshirt">
+				<option value="choose">Choose Sweatshirt Size</option>
 				<option value="smsweatshirt">Small</option>
 				<option value="mdsweatshirt">Medium</option>
 				<option value="lgsweatshirt">Large</option>
@@ -94,7 +96,7 @@ session_start();
 
 		<div><p>Choose a Team Hat: $19.99</p>
 			<select id="hat" name="hat">
-				<option value="choose">Choose Team</option>
+				<option value="choose">Choose Team Hat</option>
 				<option value="Arizona">Arizona Cardinals</option>
 				<option value="Altanta">Atlanta Falcons</option>
 				<option value="Baltimore">Baltimore Ravens</option>

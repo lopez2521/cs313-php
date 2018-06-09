@@ -9,6 +9,7 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="fan.css">
 </head>
 <body>
+	<p id="header"></p>
 
 <?php
 
@@ -44,6 +45,8 @@ foreach($rows as $row) {
 
 <p><a href="main.php">Return to Homepage.</a></p>
 
-
+<div id="footer">
+		<p>&copy 2018, Fan Fanatic</p>
+	</div>
 </body>
 </html>
