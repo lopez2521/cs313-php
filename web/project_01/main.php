@@ -142,6 +142,13 @@ session_start();
 <input type="submit" name="submit" value="Order Form"> <br />
 </div>
 	</form>
+
+	<div id="updateOrder" onclick="updateOrder();">
+		<div id="subTotal">Subtotal: </div>
+		<div id="tax">Tax: </div>
+		<div id="total">Total: </div>
+
+	</div>
 	<div id="footer">
 		<p>&copy 2018, Fan Fanatic</p>
 	</div>
