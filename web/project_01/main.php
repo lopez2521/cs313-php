@@ -144,9 +144,10 @@ session_start();
 	</form>
 
 	<div id="updateOrder" onclick="updateOrder();">
-		<div id="subTotal" onchange="updateOrder()">Subtotal: </div>
-		<div id="tax" onchange="updateOrder();">Tax: </div>
-		<div id="total" onchange="updateOrder();">Total: </div>
+		<div id="subTotal">Subtotal: <input type="text" name="subTotal" readonly="readonly" onchange="updateOrder()"> </div>
+
+		<div id="tax">Tax: <input type="text" name="tax" readonly="readonly" onchange="updateOrder()"></div>
+		<div id="total" >Total: <input type="text" name="total" readonly="readonly" onchange="updateOrder()"></div>
 
 	</div>
 	<div id="footer">
