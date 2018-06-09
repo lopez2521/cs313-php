@@ -19,7 +19,7 @@ session_start();
 <head>
 	<title>Project 01</title>
 	<link rel="stylesheet" type="text/css" href="fan.css" />
-	<script type="text/javascript" src="fans.js"></script>
+	<script type="text/javascript" src="updateOrder.js"></script>
 </head>
 <body>
 	<p id="header">
