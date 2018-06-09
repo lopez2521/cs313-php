@@ -144,9 +144,9 @@ session_start();
 	</form>
 
 	<div id="updateOrder" onclick="updateOrder();">
-		<div id="subTotal">Subtotal: </div>
-		<div id="tax">Tax: </div>
-		<div id="total">Total: </div>
+		<div id="subTotal" onchange="updateOrder()">Subtotal: </div>
+		<div id="tax" onchange="updateOrder();">Tax: </div>
+		<div id="total" onchange="updateOrder();">Total: </div>
 
 	</div>
 	<div id="footer">
