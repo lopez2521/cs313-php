@@ -13,7 +13,7 @@ session_start();
   
   <h1>Checkout Page</h1>  
     <div class="checkout" >
-      <h3 class="first">Here is your order</h3>
+      <h3 class="first">Your order has been placed!</h3>
 <!-- had something here for the cart  -->
 <?php
   $teams = $_POST['teams'];
@@ -38,8 +38,6 @@ try {
   $statement->bindValue(':gender', $gender);
   $statement->bindValue(':comments', $comments);
   $statement->execute();
-
-  echo "Your order has been placed.<br />";
 }
 
 catch (Exception $ex)
@@ -54,7 +52,7 @@ catch (Exception $ex)
   ?>
 
      <input type="button" name="return" value="Continue Shopping" onclick="window.location.href='main.php'" /><br />
-     <p>If you would like to view your order, go <a href="orderStatus.php">HERE</a></p>
+     <p>View order<a href="orderStatus.php">HERE</a></p>
      
 
       

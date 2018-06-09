@@ -137,7 +137,7 @@ session_start();
 <input type="radio" name="gender" id="gender" value="female" />Female
 <input type="radio" name="gender" id="gender" value="male" />Male<br />
 <p>Comments:<br />
-<textarea id="comments" name="other"></textarea><br />
+<textarea id="comments" name="comments"></textarea><br />
 </p>
 <input type="submit" name="submit" value="Order Form"> <br />
 </div>
